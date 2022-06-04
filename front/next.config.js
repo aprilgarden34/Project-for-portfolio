@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-}
+  cssModules: true,
+};
 
-module.exports = nextConfig
+const withSass = require("@zeit/next-sass");
+module.exports = withSass;
+module.exports = nextConfig;
