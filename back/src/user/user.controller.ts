@@ -24,7 +24,7 @@ export class UserController {
     return user;
   }
 
-  // TODO: 유저 로그인 로직(reflesh token 사용, SIM 만!)
+  // TODO: 유저 로그인 로직 (reflesh token 사용, SIM 만!)
   @Post('signin')
   @ApiOperation({
     summary: '유저 로그인 API',

@@ -1,9 +1,11 @@
 import {
   BaseEntity,
   Column,
+  CreateDateColumn,
   Entity,
   PrimaryGeneratedColumn,
   Unique,
+  UpdateDateColumn,
 } from 'typeorm';
 import { providerType } from '../user/user-provider.enum';
 import { ApiPropertyOptional } from '@nestjs/swagger';
@@ -34,4 +36,10 @@ export class User extends BaseEntity {
   @Column()
   @ApiPropertyOptional({ description: '로그인 타입' })
   provider: providerType;
+
+  @CreateDateColumn()
+  createdDate: Date;
+
+  @UpdateDateColumn()
+  updatedDate: Date;
 }
