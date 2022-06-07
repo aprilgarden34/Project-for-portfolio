@@ -17,8 +17,8 @@ export class UserService {
     private userRepository: Repository<User>, // private jwtService: JwtService,
   ) {}
 
-  async createUser(createdUserDto: CreateUserDto): Promise<void> {
-    const { username, password, email, description } = createdUserDto;
+  async createUser(createdUserDto: CreateUserDto): Promise<User> {
+    const { username, password, email } = createdUserDto;
 
     const salt = await bcrypt.genSalt();
     const hashedPassword = await bcrypt.hash(password, salt);
@@ -26,7 +26,6 @@ export class UserService {
       username,
       password: hashedPassword,
       email,
-      description,
       provider: providerType.SIM, // 임시로 sim 배정
     });
 
@@ -39,5 +38,6 @@ export class UserService {
         throw new InternalServerErrorException();
       }
     }
+    return user;
   }
 }
