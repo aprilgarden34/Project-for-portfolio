@@ -22,4 +22,12 @@ export class UserController {
     Payload: ${JSON.stringify(createUserDto)}`);
     return user;
   }
+
+  // TODO: 유저 로그인 로직(reflesh token)
+
+  // TODO: 회원 탈퇴(soft delete? 복원? 논의 필요)
+
+  // TODO: oauth kakao, google
+
+  // TODO: 회원 정보 수정
 }
