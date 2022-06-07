@@ -9,6 +9,8 @@ import { CreateCommunityDto } from './dto/create-community.dto';
 export class CommunityController {
   constructor(private readonly communityService: CommunityService) {}
 
+  // @GetUser() 이용해서 로그인한 유저 정보 가져와야함
+  // 임시로 user_id 파라미터 받아서 이용중
   @Post(':user_id')
   async createCommunity(
     @Body() createCommunityDto: CreateCommunityDto,
