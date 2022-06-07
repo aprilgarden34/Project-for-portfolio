@@ -7,7 +7,7 @@ import {
 import { User } from 'src/entities/user.entity';
 import { Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
-import * as bcrypt from 'bcryptjs';
+import * as bcrypt from 'bcrypt';
 import { providerType } from './user-provider.enum';
 
 @Injectable()
