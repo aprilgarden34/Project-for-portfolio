@@ -3,18 +3,22 @@ import {
   Inject,
   Injectable,
   InternalServerErrorException,
+  UnauthorizedException,
 } from '@nestjs/common';
 import { User } from 'src/entities/user.entity';
 import { Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
 import * as bcrypt from 'bcrypt';
 import { providerType } from './user-provider.enum';
+import { LoginUserDto } from './dto/login-user.dto';
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class UserService {
   constructor(
     @Inject('USER_REPOSITORY')
-    private userRepository: Repository<User>, // private jwtService: JwtService,
+    private userRepository: Repository<User>,
+    private jwtService: JwtService,
   ) {}
 
   async createUser(createdUserDto: CreateUserDto): Promise<User> {
@@ -39,5 +43,18 @@ export class UserService {
       }
     }
     return user;
+  }
+
+  async signIn(loginUserDto: LoginUserDto): Promise<{ accessToken: string }> {
+    const { password, email } = loginUserDto;
+    const user = this.userRepository.findOne({ where: { email } });
+
+    if (user && (await bcrypt.compare(password, (await user).password))) {
+      const payload = { email };
+      const accessToken = await this.jwtService.sign(payload);
+      return { accessToken };
+    } else {
+      throw new UnauthorizedException('login failed');
+    }
   }
 }
