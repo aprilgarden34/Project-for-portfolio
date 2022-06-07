@@ -1,4 +1,4 @@
-import { Body, Controller, HttpStatus, Post, Res } from '@nestjs/common';
+import { Logger, Body, Controller, Post } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UserService } from './user.service';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
@@ -7,6 +7,7 @@ import { User } from 'src/entities/user.entity';
 @ApiTags('유저 API')
 @Controller('user')
 export class UserController {
+  private logger = new Logger(`UserController`);
   constructor(private readonly userService: UserService) {}
 
   @Post('signup')
@@ -17,6 +18,8 @@ export class UserController {
   @ApiResponse({ description: '회원가입 성공', type: User })
   async signUp(@Body() createUserDto: CreateUserDto): Promise<User> {
     const user: User = await this.userService.createUser(createUserDto);
+    this.logger.verbose(`User ${user.username} Sign-Up Success! 
+    Payload: ${JSON.stringify(createUserDto)}`);
     return user;
   }
 }

@@ -28,11 +28,6 @@ export class CreateUserDto {
   @ApiPropertyOptional({ description: '이메일' })
   email: string;
 
-  @IsString()
-  @MaxLength(100)
-  @ApiPropertyOptional({ description: '유저 정보' })
-  description: string;
-
   static of(params: Partial<User>): User {
     const user = new User();
 
