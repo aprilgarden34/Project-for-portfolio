@@ -22,7 +22,7 @@ export class UserService {
   ) {}
 
   async createUser(createdUserDto: CreateUserDto): Promise<User> {
-    const { username, password, email } = createdUserDto;
+    const { email, username, password } = createdUserDto;
 
     const salt = await bcrypt.genSalt();
     const hashedPassword = await bcrypt.hash(password, salt);
@@ -46,7 +46,7 @@ export class UserService {
   }
 
   async signIn(loginUserDto: LoginUserDto): Promise<{ accessToken: string }> {
-    const { password, email } = loginUserDto;
+    const { email, password } = loginUserDto;
     const user = this.userRepository.findOne({ where: { email } });
 
     if (user && (await bcrypt.compare(password, (await user).password))) {

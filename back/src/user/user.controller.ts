@@ -1,9 +1,17 @@
-import { Logger, Body, Controller, Post, ValidationPipe } from '@nestjs/common';
+import {
+  Logger,
+  Body,
+  Controller,
+  Post,
+  ValidationPipe,
+  UseGuards,
+} from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UserService } from './user.service';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { User } from 'src/entities/user.entity';
 import { LoginUserDto } from './dto/login-user.dto';
+import { AuthGuard } from '@nestjs/passport';
 
 @ApiTags('User API')
 @Controller('user')
@@ -24,7 +32,7 @@ export class UserController {
     return user;
   }
 
-  // TODO: 유저 로그인 로직 (reflesh token 사용, SIM 만!)
+  // TODO: SIM 만! reflesh token 추가 필요
   @Post('signin')
   @ApiOperation({
     summary: '유저 로그인 API',

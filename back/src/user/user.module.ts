@@ -6,6 +6,7 @@ import { userRepository } from 'src/repository/user.repository';
 import { UserController } from './user.controller';
 import { UserService } from './user.service';
 import * as config from 'config';
+import { JWTStrategy } from './strategy/jwt.strategy';
 
 const jwtConfig = config.get('jwt');
 @Module({
@@ -20,7 +21,7 @@ const jwtConfig = config.get('jwt');
     DatabaseModule,
   ],
   controllers: [UserController],
-  providers: [...userRepository, UserService], //JWTStrategy
-  // exports: [JWTStrategy, PassportModule],
+  providers: [...userRepository, UserService, JWTStrategy], //y
+  exports: [JWTStrategy, PassportModule],
 })
 export class UserModule {}

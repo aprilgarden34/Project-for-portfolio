@@ -11,6 +11,15 @@ export function setupSwagger(app: INestApplication): void {
     .setTitle('Simani API Docs')
     .setDescription('Elice 4th 3-1 team Simani API description')
     .setVersion('1.0.0')
+    .addBearerAuth(
+      {
+        type: 'http',
+        scheme: 'bearer',
+        name: 'JWT',
+        in: 'header',
+      },
+      'access-token',
+    )
     .build();
 
   const document = SwaggerModule.createDocument(app, options);
