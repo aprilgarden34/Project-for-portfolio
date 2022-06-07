@@ -2,6 +2,7 @@ import {
   BaseEntity,
   Column,
   Entity,
+  JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -26,10 +27,10 @@ export class Community extends BaseEntity {
   @ApiPropertyOptional({ description: '유저 정보' })
   description: string;
 
-  @Column({ type: 'timestamp without time zone', readonly: true })
+  @Column()
   @ApiPropertyOptional({ description: '날짜' })
-  createdAt: Date;
+  createdAt: string;
 
-  @ManyToOne(() => User)
+  @ManyToOne(() => User, (user) => user.id)
   user_id: User;
 }
