@@ -1,4 +1,4 @@
-import { Body, Controller, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Param, Post } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { Community } from 'src/entities/community.entity';
 import { CommunityService } from './community.service';
@@ -21,5 +21,10 @@ export class CommunityController {
       createCommunityDto,
     );
     return community;
+  }
+
+  @Delete(':community_id')
+  async deleteCommunity(@Param('community_id') community_id: number) {
+    return this.communityService.deleteOne(community_id);
   }
 }

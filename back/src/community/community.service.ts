@@ -2,6 +2,7 @@ import {
   Inject,
   Injectable,
   InternalServerErrorException,
+  NotFoundException,
 } from '@nestjs/common';
 import { Community } from 'src/entities/community.entity';
 import { User } from 'src/entities/user.entity';
@@ -16,6 +17,7 @@ export class CommunityService {
     @Inject('USER_REPOSITORY')
     private userRepository: Repository<User>,
   ) {}
+
   async create(
     user_id: number,
     createCommunityDto: CreateCommunityDto,
@@ -44,6 +46,16 @@ export class CommunityService {
       return community;
     } catch (error) {
       throw new InternalServerErrorException();
+    }
+  }
+
+  async deleteOne(community_id: number): Promise<void> {
+    const community = await this.communityRepository.delete(community_id);
+
+    if (community.affected === 0) {
+      throw new NotFoundException(
+        `ID가 ${community_id}인 게시글이 존재하지 않습니다.`,
+      );
     }
   }
 }
