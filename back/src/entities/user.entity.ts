@@ -26,7 +26,7 @@ export class User extends BaseEntity {
 
   @Column()
   @ApiPropertyOptional({ description: '이메일' })
-  email!: string;
+  email!: string | null;
 
   @Column()
   @ApiPropertyOptional({ description: '비밀번호' })

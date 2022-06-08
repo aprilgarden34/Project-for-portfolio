@@ -5,6 +5,10 @@ import {
   Post,
   ValidationPipe,
   UseGuards,
+  Get,
+  HttpCode,
+  Req,
+  HttpStatus,
 } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UserService } from './user.service';
@@ -12,6 +16,8 @@ import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { User } from 'src/entities/user.entity';
 import { LoginUserDto } from './dto/login-user.dto';
 import { AuthGuard } from '@nestjs/passport';
+import { UserKakaoDto } from './dto/user.kakao.dto';
+import { KakaoGuard } from './guard/kakao.guard';
 
 @ApiTags('User API')
 @Controller('user')
@@ -51,6 +57,31 @@ export class UserController {
   // TODO: 회원 탈퇴(soft delete? 복원? 논의 필요)
 
   // TODO: oauth kakao, google 회원가입, 로그인
+  // kakao login
+  @Get('kakao')
+  @HttpCode(200)
+  @UseGuards(KakaoGuard)
+  @ApiOperation({
+    summary: '유저 카카오 로그인 API',
+    description: '로그인 요청',
+  })
+  @ApiResponse({ description: '로그인 요청 성공', type: User })
+  async kakaoLogin() {
+    this.logger.verbose(`Kakao Sign-In Request Success!`);
+    return HttpStatus.OK;
+  }
+
+  @Get('kakao/redirect')
+  @HttpCode(200)
+  @UseGuards(AuthGuard('kakao'))
+  @ApiOperation({
+    summary: '유저 카카오 로그인 API',
+    description: '유저에게 카카오 토큰을 발행한다.',
+  })
+  @ApiResponse({ description: '카카오 로그인 성공', type: User })
+  async kakaoLoginCallback(@Req() req): Promise<{ accessToken: string }> {
+    return this.userService.kakaoLogin(req.user as UserKakaoDto);
+  }
 
   // TODO: 회원 정보 수정
 }
