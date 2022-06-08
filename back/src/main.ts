@@ -4,6 +4,19 @@ import { AppModule } from './app.module';
 import * as config from 'config';
 import { setupSwagger } from 'src/util/swagger';
 
+import * as dotenv from 'dotenv';
+import * as path from 'path';
+
+dotenv.config({
+  path: path.resolve(
+    process.env.NODE_ENV === 'production'
+      ? '.production.env'
+      : process.env.NODE_ENV === 'stage'
+      ? '.env'
+      : '.development.env',
+  ),
+});
+
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
