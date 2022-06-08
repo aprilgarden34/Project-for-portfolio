@@ -3,12 +3,14 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   Unique,
   UpdateDateColumn,
 } from 'typeorm';
 import { providerType } from '../user/user-provider.enum';
 import { ApiPropertyOptional } from '@nestjs/swagger';
+import { Community } from './community.entity';
 import { Exclude } from 'class-transformer';
 
 @Entity()
@@ -36,7 +38,10 @@ export class User extends BaseEntity {
 
   @Column()
   @ApiPropertyOptional({ description: '로그인 타입' })
-  provider!: providerType;
+  provider: providerType;
+
+  @OneToMany(() => Community, (community) => community.user_id)
+  community: Community[];
 
   @Column({ nullable: true })
   @Exclude()

@@ -16,6 +16,8 @@ export const databaseProviders = [
         database: process.env.RDS_NAME || dbConfig.database,
         entities: [__dirname + '/../**/*.entity{.ts,.js}'],
         synchronize: dbConfig.synchronize,
+
+        timezone: 'Z',
       });
 
       return dataSource.initialize();
