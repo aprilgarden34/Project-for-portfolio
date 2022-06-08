@@ -66,7 +66,7 @@ export class UserService {
     let user = await this.userRepository.findOne({ where: { email } });
 
     if (!user) {
-      user = this.userRepository.create({
+      user = await this.userRepository.create({
         username,
         email,
         password,
@@ -83,8 +83,9 @@ export class UserService {
         }
       }
     }
-    const payload = { id: user.id, accessToken: userKakaoDto.accessToken };
+    const payload = { accessToken: userKakaoDto.accessToken };
     const accessToken = await this.jwtService.sign(payload);
+    console.log(accessToken, '==========================');
     return { accessToken };
   }
 }

@@ -4,13 +4,14 @@ import * as config from 'config';
 import { Strategy } from 'passport-local';
 import { UserKakaoDto } from '../dto/user.kakao.dto';
 
+const kakaoConfig = config.get('kakao');
+
 @Injectable()
 export class kakaoStragety extends PassportStrategy(Strategy, 'kakao') {
   constructor() {
     super({
-      clientID: process.env.KAKAO_CLIENTID || config.get('kakao').clientID,
-      callbackURL:
-        process.env.KAKAO_CALLBACKURL || config.get('kakao').callbackURL,
+      clientID: process.env.KAKAO_CLIENTID || kakaoConfig.clientID,
+      callbackURL: process.env.KAKAO_CALLBACKURL || kakaoConfig.callbackURL,
     });
   }
 

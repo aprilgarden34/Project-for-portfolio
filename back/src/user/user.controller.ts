@@ -80,7 +80,11 @@ export class UserController {
   })
   @ApiResponse({ description: '카카오 로그인 성공', type: User })
   async kakaoLoginCallback(@Req() req): Promise<{ accessToken: string }> {
-    return this.userService.kakaoLogin(req.user as UserKakaoDto);
+    const accessToken = await this.userService.kakaoLogin(
+      req.user as UserKakaoDto,
+    );
+    this.logger.verbose(`Kakao ${accessToken} Sign-In Success!`);
+    return accessToken;
   }
 
   // TODO: 회원 정보 수정
