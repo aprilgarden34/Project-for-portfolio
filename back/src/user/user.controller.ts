@@ -33,6 +33,20 @@ export class UserController {
   }
 
   // TODO: SIM 만! reflesh token 추가 필요
+  @Post('signin')
+  @ApiOperation({
+    summary: '유저 로그인 API',
+    description: '유저에게 토큰을 발행한다.',
+  })
+  @ApiResponse({ description: '로그인 성공', type: User })
+  async signIn(
+    @Body(ValidationPipe) loginUserDto: LoginUserDto,
+  ): Promise<{ accessToken: string }> {
+    const { accessToken } = await this.userService.signIn(loginUserDto);
+    this.logger.verbose(`User ${loginUserDto.email} Sign-In Success! 
+      Payload: ${JSON.stringify(loginUserDto)}`);
+    return { accessToken };
+  }
 
   // TODO: 회원 탈퇴(soft delete? 복원? 논의 필요)
 
