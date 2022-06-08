@@ -8,13 +8,7 @@ import {
 import { ApiPropertyOptional } from '@nestjs/swagger';
 import { User } from 'src/entities/user.entity';
 
-export class CreateUserDto {
-  @IsString()
-  @MinLength(4)
-  @MaxLength(20)
-  @ApiPropertyOptional({ description: '닉네임' })
-  username: string;
-
+export class LoginUserDto {
   @IsString()
   @MinLength(4)
   @MaxLength(20)
