@@ -9,25 +9,26 @@ import {
 } from 'typeorm';
 import { providerType } from '../user/user-provider.enum';
 import { ApiPropertyOptional } from '@nestjs/swagger';
+import { Exclude } from 'class-transformer';
 
 @Entity()
 @Unique(['email'])
 export class User extends BaseEntity {
   @PrimaryGeneratedColumn()
   @ApiPropertyOptional({ description: 'id' })
-  id: number;
+  id!: number;
 
   @Column()
   @ApiPropertyOptional({ description: '닉네임' })
-  username: string;
+  username!: string;
 
   @Column()
   @ApiPropertyOptional({ description: '이메일' })
-  email: string;
+  email!: string;
 
   @Column()
   @ApiPropertyOptional({ description: '비밀번호' })
-  password: string;
+  password!: string;
 
   @Column({ default: 'None' })
   @ApiPropertyOptional({ description: '유저 정보' })
@@ -35,11 +36,15 @@ export class User extends BaseEntity {
 
   @Column()
   @ApiPropertyOptional({ description: '로그인 타입' })
-  provider: providerType;
+  provider!: providerType;
+
+  @Column({ nullable: true })
+  @Exclude()
+  currentHashedRefreshToken?: string;
 
   @CreateDateColumn()
-  createdDate: Date;
+  createdDate?: Date;
 
   @UpdateDateColumn()
-  updatedDate: Date;
+  updatedDate?: Date;
 }
