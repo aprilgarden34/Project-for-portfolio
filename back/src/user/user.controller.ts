@@ -5,6 +5,7 @@ import {
   Post,
   ValidationPipe,
   UseGuards,
+  Get,
 } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UserService } from './user.service';
@@ -12,6 +13,8 @@ import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { User } from 'src/entities/user.entity';
 import { LoginUserDto } from './dto/login-user.dto';
 import { AuthGuard } from '@nestjs/passport';
+import { throwIfEmpty } from 'rxjs';
+import { GetAccessToken } from './refresh.decorator';
 
 @ApiTags('User API')
 @Controller('user')
@@ -32,7 +35,7 @@ export class UserController {
     return user;
   }
 
-  // TODO: SIM 만! reflesh token 추가 필요
+  // TODO: SIM 만! refresh token 추가 필요
   @Post('signin')
   @ApiOperation({
     summary: '유저 로그인 API',
@@ -46,6 +49,13 @@ export class UserController {
     this.logger.verbose(`User ${loginUserDto.email} Sign-In Success! 
       Payload: ${JSON.stringify(loginUserDto)}`);
     return { accessToken };
+  }
+
+  // TODO: refresh 재발급 요청
+  @Get('refresh')
+  async refresh(@GetAccessToken() accessToken: string) {
+    const newAccessToken = await this.userService.refreshToken(accessToken);
+    return newAccessToken;
   }
 
   // TODO: 회원 탈퇴(soft delete? 복원? 논의 필요)
