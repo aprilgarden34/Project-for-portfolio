@@ -18,12 +18,7 @@ export class kakaoStragety extends PassportStrategy(Strategy, 'kakao') {
 
   async validate(accessToken: string, profile, done) {
     try {
-      const {
-        id,
-        _json: { kakao_account: kakaoUserInfo },
-        email,
-        nickname,
-      } = profile;
+      const { nickname, kakaoUserInfo, id } = profile;
 
       const password = String(id);
       const data: UserOauthDto = {
