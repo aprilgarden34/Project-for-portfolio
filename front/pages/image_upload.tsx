@@ -1,4 +1,4 @@
-import ImageUpload from "../components/browser_Noh/ImageUpload/ImageUpload";
+import ImageUpload from '../components/desktop/ImageUpload/ImageUpload';
 
 const image_upload: React.FC = () => {
   return (

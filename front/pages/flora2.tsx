@@ -1,4 +1,4 @@
-import FloraMobile from "../components/mobile_Noh/Flora/FloraMobile";
+import FloraMobile from '../components/mobile/Flora/FloraMobile';
 
 const Flora2: React.FC = () => {
   return <FloraMobile />;
