@@ -1,0 +1,29 @@
+.bottomBox {
+  width: 100%;
+  height: 8%;
+  background-color: #1fe6bf;
+  color: white;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  box-sizing: border-box;
+  float: bottom;
+}
+
+.bottomNavi {
+  width: 100%;
+  height: 5%;
+  background-color: aliceblue;
+  color: white;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 10px;
+  box-sizing: border-box;
+}

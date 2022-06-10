@@ -1,0 +1,11 @@
+.container {
+  width: 420px;
+  height: 880px;
+  background-color: #faf2e8;
+}
+
+.middleContainer {
+  height: 85%;
+  background-color: #faf2e8;
+  overflow-y: auto;
+}

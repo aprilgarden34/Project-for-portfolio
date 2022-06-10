@@ -1,0 +1,8 @@
+.FloraHeader_ImageBox {
+  width: 100%;
+  height: 28%;
+  background-color: black;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  /* border: 1.5px solid #9cbe7a; */
+  position: relative;
+}
