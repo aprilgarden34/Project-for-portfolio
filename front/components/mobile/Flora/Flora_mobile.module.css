@@ -6,8 +6,9 @@
   grid-template-rows: 7% 85% 8%;
 }
 
-.profileBox {
-  width: 100%;
+.middleContainer {
   height: 100%;
   grid-row-start: 2;
+  background-color: ghostwhite;
+  overflow-y: auto;
 }

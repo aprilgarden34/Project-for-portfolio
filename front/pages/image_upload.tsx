@@ -1,6 +1,6 @@
 import ImageUpload from '../components/desktop/ImageUpload/ImageUpload';
 
-const image_upload: React.FC = () => {
+const Image_upload: React.FC = () => {
   return (
     <>
       <ImageUpload />
@@ -8,4 +8,4 @@ const image_upload: React.FC = () => {
   );
 };
 
-export default image_upload;
+export default Image_upload;
