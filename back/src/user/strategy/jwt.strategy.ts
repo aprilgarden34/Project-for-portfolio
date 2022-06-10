@@ -12,8 +12,9 @@ export class JWTStrategy extends PassportStrategy(Strategy) {
     private userRepository: Repository<User>,
   ) {
     super({
-      secretOrKey: process.env.JWT_SECRET || config.get('jwt').secret,
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+      secretOrKey: 'SimManni1234',
+      ignoreExpiration: true,
     });
   }
 

@@ -53,6 +53,7 @@ export class UserController {
 
   // TODO: refresh 재발급 요청
   @Get('refresh')
+  @UseGuards(AuthGuard('refresh'))
   async refresh(@GetAccessToken() accessToken: string) {
     const newAccessToken = await this.userService.refreshToken(accessToken);
     return newAccessToken;
