@@ -2,6 +2,6 @@ import { Injectable, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 
 @Injectable()
-class KakaoAuthGuard extends AuthGuard('kakao') {}
+class GoogleGuard extends AuthGuard('google') {}
 
-export const KakaoAuth = () => UseGuards(KakaoAuthGuard);
+export const GoogleAuth = () => UseGuards(GoogleGuard);

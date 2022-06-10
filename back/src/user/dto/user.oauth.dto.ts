@@ -7,8 +7,9 @@ import {
 } from 'class-validator';
 import { ApiPropertyOptional } from '@nestjs/swagger';
 import { User } from 'src/entities/user.entity';
+import { providerType } from '../user-provider.enum';
 
-export class UserKakaoDto {
+export class UserOauthDto {
   @IsString()
   @MinLength(4)
   @MaxLength(20)
@@ -28,7 +29,11 @@ export class UserKakaoDto {
   username: string;
 
   @IsString()
-  @ApiPropertyOptional({ description: '엑세스 토큰' })
+  @ApiPropertyOptional({ description: '타입' })
+  provider: providerType;
+
+  @IsString()
+  @ApiPropertyOptional({ description: '토큰' })
   accessToken: string;
 
   static of(params: Partial<User>): User {

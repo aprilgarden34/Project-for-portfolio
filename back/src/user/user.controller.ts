@@ -4,9 +4,7 @@ import {
   Controller,
   Post,
   ValidationPipe,
-  UseGuards,
   Get,
-  HttpCode,
   Req,
   HttpStatus,
 } from '@nestjs/common';
@@ -15,9 +13,9 @@ import { UserService } from './user.service';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { User } from 'src/entities/user.entity';
 import { LoginUserDto } from './dto/login-user.dto';
-import { AuthGuard } from '@nestjs/passport';
-import { UserKakaoDto } from './dto/user.kakao.dto';
-import { KakaoGuard } from './guard/kakao.guard';
+import { UserOauthDto } from './dto/user.oauth.dto';
+import { KakaoAuth } from './guard/kakao.guard';
+import { GoogleAuth } from './guard/google.guard';
 
 @ApiTags('User API')
 @Controller('user')
@@ -56,11 +54,10 @@ export class UserController {
 
   // TODO: 회원 탈퇴(soft delete? 복원? 논의 필요)
 
-  // TODO: oauth kakao, google 회원가입, 로그인
+  // oauth kakao, google 회원가입, 로그인
   // kakao login
   @Get('kakao')
-  @HttpCode(200)
-  @UseGuards(KakaoGuard)
+  @KakaoAuth()
   @ApiOperation({
     summary: '유저 카카오 로그인 API',
     description: '로그인 요청',
@@ -72,20 +69,50 @@ export class UserController {
   }
 
   @Get('kakao/redirect')
-  @HttpCode(200)
-  @UseGuards(AuthGuard('kakao'))
+  @KakaoAuth()
   @ApiOperation({
     summary: '유저 카카오 로그인 API',
     description: '유저에게 카카오 토큰을 발행한다.',
   })
   @ApiResponse({ description: '카카오 로그인 성공', type: User })
-  async kakaoLoginCallback(@Req() req): Promise<{ accessToken: string }> {
-    const accessToken = await this.userService.kakaoLogin(
-      req.user as UserKakaoDto,
+  async kakaoLoginCallback(@Req() req): Promise<any> {
+    const { accessToken, email, username } = await this.userService.kakaoLogin(
+      req.user as UserOauthDto,
     );
-    this.logger.verbose(`Kakao ${accessToken} Sign-In Success!`);
-    return accessToken;
+    this.logger.verbose(`Kakao User Email ${email} Sign-In Success!`);
+    return { accessToken, email, username };
+  }
+
+  // google
+  @Get('google')
+  @GoogleAuth()
+  @ApiOperation({
+    summary: '유저 구글 로그인 API',
+    description: '로그인 요청',
+  })
+  @ApiResponse({ description: '유저 구글 로그인 성공', type: User })
+  async googleAuth() {
+    this.logger.verbose(`Google Sign-In Request Success!`);
+    return HttpStatus.OK;
+  }
+
+  @Get('google/redirect')
+  @GoogleAuth()
+  @ApiOperation({
+    summary: '유저 구글 로그인 API',
+    description: '유저에게 구글 토큰을 발행한다.',
+  })
+  @ApiResponse({ description: '구글 로그인 성공', type: User })
+  async GoogleLoginCallback(@Req() req): Promise<any> {
+    const { accessToken, email, username } = await this.userService.googleLogin(
+      req.user as UserOauthDto,
+    );
+    this.logger.verbose(`Google User Email ${email} Sign-In Success!`);
+    return { accessToken, email, username };
   }
 
   // TODO: 회원 정보 수정
+}
+function GoogleGuard() {
+  throw new Error('Function not implemented.');
 }

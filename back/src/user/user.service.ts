@@ -12,14 +12,14 @@ import * as bcrypt from 'bcrypt';
 import { providerType } from './user-provider.enum';
 import { LoginUserDto } from './dto/login-user.dto';
 import { JwtService } from '@nestjs/jwt';
-import { UserKakaoDto } from './dto/user.kakao.dto';
+import { UserOauthDto } from './dto/user.oauth.dto';
 
 @Injectable()
 export class UserService {
   constructor(
     @Inject('USER_REPOSITORY')
     private readonly userRepository: Repository<User>,
-    private readonly jwtService: JwtService, // private readonly configService: ConfigService,
+    private readonly jwtService: JwtService,
   ) {}
 
   async createUser(createdUserDto: CreateUserDto): Promise<User> {
@@ -59,9 +59,14 @@ export class UserService {
     }
   }
 
-  async kakaoLogin(
-    userKakaoDto: UserKakaoDto,
-  ): Promise<{ accessToken: string }> {
+  // Oauth
+  async getOauth(email: string): Promise<User | null> {
+    const user = await this.userRepository.findOne({ where: { email } });
+    return user;
+  }
+
+  // kakao
+  async kakaoLogin(userKakaoDto: UserOauthDto): Promise<any> {
     const { password, email, username } = userKakaoDto;
     let user = await this.userRepository.findOne({ where: { email } });
 
@@ -83,9 +88,36 @@ export class UserService {
         }
       }
     }
-    const payload = { accessToken: userKakaoDto.accessToken };
+    const payload = { email };
     const accessToken = await this.jwtService.sign(payload);
-    console.log(accessToken, '==========================');
-    return { accessToken };
+    return { accessToken, email: user.email, username: user.username };
+  }
+
+  // google
+  async googleLogin(userOauthDto: UserOauthDto): Promise<any> {
+    const { password, email, username } = userOauthDto;
+    let user = await this.userRepository.findOne({ where: { email } });
+
+    if (!user) {
+      user = await this.userRepository.create({
+        username,
+        email,
+        password,
+        provider: providerType.KAKAO,
+      });
+
+      try {
+        await this.userRepository.save(user);
+      } catch (err) {
+        if (err.code === '23505') {
+          throw new ConflictException('Existing User');
+        } else {
+          throw new InternalServerErrorException();
+        }
+      }
+    }
+    const payload = { email };
+    const accessToken = await this.jwtService.sign(payload);
+    return { accessToken, email: user.email, username: user.username };
   }
 }
