@@ -13,8 +13,7 @@ import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { User } from 'src/entities/user.entity';
 import { LoginUserDto } from './dto/login-user.dto';
 import { AuthGuard } from '@nestjs/passport';
-import { throwIfEmpty } from 'rxjs';
-import { GetAccessToken } from './refresh.decorator';
+import { GetUser } from './get-user.decorator';
 
 @ApiTags('User API')
 @Controller('user')
@@ -54,8 +53,9 @@ export class UserController {
   // TODO: refresh 재발급 요청
   @Get('refresh')
   @UseGuards(AuthGuard('refresh'))
-  async refresh(@GetAccessToken() accessToken: string) {
-    const newAccessToken = await this.userService.refreshToken(accessToken);
+  // strategy 에서 보내주는 return user값을 받아오는 데코레이터 필요
+  async refresh(@GetUser() user: User) {
+    const newAccessToken = await this.userService.refreshToken(user);
     return newAccessToken;
   }
 

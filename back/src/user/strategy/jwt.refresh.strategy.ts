@@ -5,6 +5,7 @@ import { User } from 'src/entities/user.entity';
 import { Repository } from 'typeorm';
 import * as config from 'config';
 
+const Config = config.get('jwt');
 // TODO: refresh Guard 위한 Strategy 생성
 // super에서 만료된 access_token을 받아도 무시하고 validate 함수 실행하게 하는 옵션 추가
 @Injectable()
@@ -14,7 +15,7 @@ export class JWTRefreshStrategy extends PassportStrategy(Strategy, 'refresh') {
     private userRepository: Repository<User>,
   ) {
     super({
-      secretOrKey: config.get('jwt').secret,
+      secretOrKey: process.env.JWT_SECRET || Config.secret,
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: true,
     });
@@ -25,7 +26,6 @@ export class JWTRefreshStrategy extends PassportStrategy(Strategy, 'refresh') {
   // refresh 유효한 경우엔 access_token 재발급
   // 만료된 경우엔 재로그인하도록 유도
   async validate(payload: any) {
-    console.log(payload);
     const { username } = payload;
     const user: User = await this.userRepository.findOne({
       where: { username },

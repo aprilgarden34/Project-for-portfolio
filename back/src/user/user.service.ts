@@ -69,13 +69,12 @@ export class UserService {
   }
 
   // access_token 만료시, refresh_token 재발급
-  async refreshToken(accessToken: string) {
+  async refreshToken(user: User) {
     // TODO: redis 이용하여 refresh_token 유효한지 확인
-    const payload = this.jwtService.decode(accessToken);
-    const email = payload['email'];
 
-    const newAccessToken = await this.jwtService.sign({ email });
+    console.log(user);
+    //const newAccessToken = await this.jwtService.sign({ user.email });
 
-    return { newAccessToken };
+    //return { newAccessToken };
   }
 }
