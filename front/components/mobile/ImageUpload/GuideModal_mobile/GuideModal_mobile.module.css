@@ -1,0 +1,42 @@
+.alertMessage {
+  margin-top: 3rem;
+}
+
+.alertMessage p {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.tipBoxWrapper {
+  width: 90%;
+  height: 90%;
+  margin: 0.5rem auto;
+}
+
+.tipBox {
+  width: 100%;
+  height: 30%;
+  margin-top: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.tipBox p {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.flexBox {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.exampleImage {
+  background-color: white;
+  width: 47%;
+  height: 95%;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 6px;
+}
