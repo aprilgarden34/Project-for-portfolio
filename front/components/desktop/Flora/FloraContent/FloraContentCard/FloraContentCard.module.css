@@ -1,0 +1,63 @@
+.card {
+  transition: transform 0.2s ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.card:hover {
+  transform: scale(1.05) translateY(-10px);
+}
+
+.modalImageBox {
+  background-color: white;
+  width: 100%;
+  height: 40%;
+  position: relative;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.modalBoxText {
+  padding: 20px;
+  font-size: 1rem;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-y: hidden;
+}
+
+.plantName {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #53b98a;
+}
+
+.option {
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-right: 20px;
+}
+
+.content {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.shareButtonBox {
+  width: 100%;
+  height: 10%;
+  text-align: center;
+}
+
+.shareButton {
+  background-color: #53b98a;
+  color: white;
+  font-size: 1.8rem;
+  width: 6rem;
+  height: 3.2rem;
+  line-height: 1.25rem;
+  padding: 0;
+}
