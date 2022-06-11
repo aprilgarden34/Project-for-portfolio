@@ -7,7 +7,10 @@ import { UserController } from './user.controller';
 import { UserService } from './user.service';
 import * as config from 'config';
 import { JWTStrategy } from './strategy/jwt.strategy';
+import { kakaoStragety } from './strategy/kakao.strategy';
+import { GoogleStrategy } from './strategy/google.strategy';
 import { JWTRefreshStrategy } from './strategy/jwt.refresh.strategy';
+// import { GoogleStrategy } from './strategy/google.strategy';
 
 const jwtConfig = config.get('jwt');
 @Module({
@@ -22,7 +25,20 @@ const jwtConfig = config.get('jwt');
     DatabaseModule,
   ],
   controllers: [UserController],
-  providers: [...userRepository, UserService, JWTStrategy, JWTRefreshStrategy],
-  exports: [JWTStrategy, PassportModule, JWTRefreshStrategy],
+  providers: [
+    ...userRepository,
+    UserService,
+    kakaoStragety,
+    GoogleStrategy,
+    JWTStrategy,
+    JWTRefreshStrategy,
+  ],
+  exports: [
+    JWTStrategy,
+    kakaoStragety,
+    GoogleStrategy,
+    PassportModule,
+    JWTRefreshStrategy,
+  ], // GoogleStrategy,
 })
 export class UserModule {}

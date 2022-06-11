@@ -8,3 +8,11 @@ db:
 
 jwt:
   expiresIn: 3600
+
+kakao:
+  clientID: 62e0dd3e403cae1705e7aea76e27240d
+  callbackURL: http://localhost:5000/user/kakao/redirect
+
+google:
+  clientID:
+  callbackURL: http://localhost:5000/user/google/redirect

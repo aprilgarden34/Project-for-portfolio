@@ -14,7 +14,7 @@ export class CommunityController {
   @Post(':user_id')
   async createCommunity(
     @Body() createCommunityDto: CreateCommunityDto,
-    @Param('user_id') user_id: number,
+    @Param('user_id') user_id: string,
   ): Promise<Community> {
     const community = await this.communityService.create(
       user_id,

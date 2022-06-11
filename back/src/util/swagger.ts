@@ -20,6 +20,15 @@ export function setupSwagger(app: INestApplication): void {
       },
       'access-token',
     )
+    .addOAuth2(
+      {
+        type: 'http',
+        scheme: 'bearer',
+        name: 'JWT',
+        in: 'Authorization',
+      },
+      'oauth-token',
+    )
     .build();
 
   const document = SwaggerModule.createDocument(app, options);

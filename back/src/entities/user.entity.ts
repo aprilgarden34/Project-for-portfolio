@@ -4,7 +4,7 @@ import {
   CreateDateColumn,
   Entity,
   OneToMany,
-  PrimaryGeneratedColumn,
+  PrimaryColumn,
   Unique,
   UpdateDateColumn,
 } from 'typeorm';
@@ -14,11 +14,11 @@ import { Community } from './community.entity';
 import { Exclude } from 'class-transformer';
 
 @Entity()
-@Unique(['email'])
+@Unique(['email', 'id'])
 export class User extends BaseEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryColumn()
   @ApiPropertyOptional({ description: 'id' })
-  id!: number;
+  id!: string;
 
   @Column()
   @ApiPropertyOptional({ description: '닉네임' })
@@ -26,7 +26,7 @@ export class User extends BaseEntity {
 
   @Column()
   @ApiPropertyOptional({ description: '이메일' })
-  email!: string;
+  email!: string | null;
 
   @Column()
   @ApiPropertyOptional({ description: '비밀번호' })
