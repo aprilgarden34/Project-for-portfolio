@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
-import Header from '../../componnents/header/header';
-import CommunityItem from '../../componnents/community/CommunityItem';
+import Header from '../../components/header/header';
+import CommunityItem from '../../components/community/CommunityItem';
 
 const Community: NextPage = () => {
   return (
