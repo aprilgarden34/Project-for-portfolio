@@ -1,7 +1,7 @@
-import FloraMobile from '../components/mobile/Flora/FloraMobile';
+import Flora_mobile from '../components/mobile/Flora/Flora_mobile';
 
 const Flora2: React.FC = () => {
-  return <FloraMobile />;
+  return <Flora_mobile />;
 };
 
 export default Flora2;
