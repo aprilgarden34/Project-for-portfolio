@@ -1,11 +1,11 @@
-import { useState } from "react";
-import Image from "next/image";
-import styles from "./FloraContentCard.module.css";
-import { Card, Col, Row, Modal, Button } from "antd";
-import { CloseOutlined } from "@ant-design/icons";
+import { useState } from 'react';
+import Image from 'next/image';
+import styles from './BookContentCard.module.css';
+import { Card, Col, Row, Modal, Button } from 'antd';
+import { CloseOutlined } from '@ant-design/icons';
 const { Meta } = Card;
 
-const FloraContentCard: React.FC<{ span: number; key: string }> = (props) => {
+const BookContentCard: React.FC<{ span: number; key: string }> = (props) => {
   const [visible, setVisible] = useState(false);
   return (
     <>
@@ -30,10 +30,10 @@ const FloraContentCard: React.FC<{ span: number; key: string }> = (props) => {
         <Modal
           visible={visible}
           width={600}
-          bodyStyle={{ height: "800px", padding: "0px" }}
+          bodyStyle={{ height: '800px', padding: '0px' }}
           closeIcon={
             <CloseOutlined
-              style={{ fontSize: "2rem", color: "white" }}
+              style={{ fontSize: '2rem', color: 'white' }}
               onClick={() => setVisible(false)}
             />
           }
@@ -75,4 +75,4 @@ const FloraContentCard: React.FC<{ span: number; key: string }> = (props) => {
   );
 };
 
-export default FloraContentCard;
+export default BookContentCard;

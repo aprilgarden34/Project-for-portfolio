@@ -1,10 +1,10 @@
 import TopNavi from '../TopNavi/TopNavi';
 import SearchBar from './SearchBar/SearchBar';
-import FloraCard from './FloraCard/FloraCard';
+import FloraCard from './BookCard/BookCard';
 import BottomNavi from '../BottomNavi/BottomNavi';
-import styles from './Flora_mobile.module.css';
+import styles from './Book_mobile.module.css';
 
-const Flora_mobile: React.FC = () => {
+const Book_mobile: React.FC = () => {
   return (
     <>
       <div className={styles.container}>
@@ -20,4 +20,4 @@ const Flora_mobile: React.FC = () => {
   );
 };
 
-export default Flora_mobile;
+export default Book_mobile;

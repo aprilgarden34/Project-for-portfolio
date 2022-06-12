@@ -1,18 +1,18 @@
-import { useState } from "react";
-import { useMediaQuery } from "react-responsive";
-import styles from "./FloraContent.module.css";
-import Image from "next/image";
-import MiddleContentCard from "./FloraContentCard/FloraContentCard";
-import { Grid, Row, Col, Card, Avatar, Input } from "antd";
-import { DoubleLeftOutlined, DoubleRightOutlined } from "@ant-design/icons";
-import { clear } from "console";
-import { Value } from "sass";
+import { useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
+import styles from './BookContent.module.css';
+import Image from 'next/image';
+import BookContentCard from './BookContentCard/BookContentCard';
+import { Grid, Row, Col, Card, Avatar, Input } from 'antd';
+import { DoubleLeftOutlined, DoubleRightOutlined } from '@ant-design/icons';
+import { clear } from 'console';
+import { Value } from 'sass';
 
-const FloraContent: React.FC = () => {
+const BookContent: React.FC = () => {
   const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
   const lastPage = Math.ceil(arr.length / 6);
 
-  const isDesktopOrLaptop = useMediaQuery({ query: "(min-width: 864px)" });
+  const isDesktopOrLaptop = useMediaQuery({ query: '(min-width: 864px)' });
   // const isTablet = useMediaQuery({ query: "(max-width: 864px)" });
 
   const [page, setPage] = useState(1);
@@ -39,8 +39,8 @@ const FloraContent: React.FC = () => {
                   (item, index) =>
                     page - 1 <= index / 6 &&
                     index / 6 < page && (
-                      <MiddleContentCard span={12} key={`key_${index}`} />
-                    )
+                      <BookContentCard span={12} key={`key_${index}`} />
+                    ),
                 )}
               </Row>
             </div>
@@ -73,4 +73,4 @@ const FloraContent: React.FC = () => {
   );
 };
 
-export default FloraContent;
+export default BookContent;

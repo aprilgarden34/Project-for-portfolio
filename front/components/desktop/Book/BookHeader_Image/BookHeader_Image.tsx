@@ -1,7 +1,7 @@
-import styles from "./FloraHeader_Image.module.css";
-import Image from "next/image";
+import styles from './BookHeader_Image.module.css';
+import Image from 'next/image';
 
-const FloraHeader_Image: React.FC = () => {
+const BookHeader_Image: React.FC = () => {
   return (
     <>
       <div className={styles.FloraHeader_ImageBox}>
@@ -15,4 +15,4 @@ const FloraHeader_Image: React.FC = () => {
   );
 };
 
-export default FloraHeader_Image;
+export default BookHeader_Image;

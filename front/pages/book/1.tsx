@@ -1,13 +1,13 @@
 import { formatStrategyValues } from 'rc-tree-select/lib/utils/strategyUtil';
 import { useMediaQuery } from 'react-responsive';
-import FloraDeskTop from '../components/desktop/Flora/FloraDesktop';
+import BookDeskTop from '../../components/desktop/Book/BookDesktop';
 
-const Flora: React.FC = () => {
+const Book: React.FC = () => {
   return (
     <>
-      <FloraDeskTop />
+      <BookDeskTop />
     </>
   );
 };
 
-export default Flora;
+export default Book;
