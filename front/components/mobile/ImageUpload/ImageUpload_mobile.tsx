@@ -9,7 +9,7 @@ import { Button, Modal } from 'antd';
 const ImageUpload_mobile: React.FC = () => {
   // const [visible, setVisible] = useState(false);
   return (
-    <>
+    <div>
       <div className={styles.container}>
         <TopNavi />
         <div className={styles.middleContainer}>
@@ -43,7 +43,7 @@ const ImageUpload_mobile: React.FC = () => {
         <BottomNavi />
       </div>
       {/* <GuideModal_mobile visible={visible} /> */}
-    </>
+    </div>
   );
 };
 
