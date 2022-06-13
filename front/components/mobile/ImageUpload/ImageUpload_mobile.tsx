@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import styles from './ImageUpload_mobile.module.css';
 import TopNavi from '../TopNavi/TopNavi';
@@ -8,6 +8,35 @@ import { Button, Modal } from 'antd';
 
 const ImageUpload_mobile: React.FC = () => {
   // const [visible, setVisible] = useState(false);
+  const [isSnapped, SetisSnapped] = useState(false);
+
+  // Preview Photo Logic
+
+  const previewPhotoRef = useRef<any>();
+  const photoPreview = () => {
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      navigator.mediaDevices
+        .getUserMedia({ video: true })
+        .then(function (stream) {
+          previewPhotoRef.current.srcObject = stream;
+          previewPhotoRef.current.play();
+        });
+    }
+  };
+
+  useEffect(() => {
+    photoPreview;
+  }, []);
+
+  // Snap Photo Logic
+
+  const SnapPhotoRef = useRef<any>();
+  const snapPhoto = () => {
+    const context = SnapPhotoRef.current.getContext('2d');
+    context.drawImage(previewPhotoRef.current, 0, 0, 290, 319);
+    SetisSnapped(true);
+  };
+
   return (
     <div>
       <div className={styles.container}>
@@ -24,18 +53,48 @@ const ImageUpload_mobile: React.FC = () => {
                 onClick={() => setVisible(true)}
                 children="촬영 가이드"
               /> */}
+
               <div className={styles.imagePreview}>
-                <Image
-                  src="/images/flora_header_image.jpg"
-                  layout="fill"
-                  objectFit="cover"
-                  draggable={false}
-                />
+                {isSnapped ? (
+                  <>
+                    <canvas
+                      id="canvas"
+                      ref={SnapPhotoRef}
+                      width="100%"
+                      height="100%"
+                    />
+                    <video
+                      id="video"
+                      ref={previewPhotoRef}
+                      width="0%"
+                      height="0%"
+                      autoPlay
+                    />
+                  </>
+                ) : (
+                  <>
+                    <canvas
+                      id="canvas"
+                      ref={SnapPhotoRef}
+                      width="0%"
+                      height="0%"
+                    />
+                    <video
+                      id="video"
+                      ref={previewPhotoRef}
+                      width="100%"
+                      height="100%"
+                      autoPlay
+                    />
+                  </>
+                )}
               </div>
+
               {/* <Button className={styles.imageUploadButton} children="+" /> */}
               <Button
                 className={styles.imageClassificationButton}
                 children="판별"
+                onClick={snapPhoto}
               />
             </div>
           </div>
