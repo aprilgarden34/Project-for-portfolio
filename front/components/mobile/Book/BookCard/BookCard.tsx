@@ -1,9 +1,9 @@
-import { useState } from "react";
-import Image from "next/image";
-import styles from "./FloraCard.module.css";
-import { Modal } from "antd";
+import { useState } from 'react';
+import Image from 'next/image';
+import styles from './BookCard.module.css';
+import { Modal } from 'antd';
 
-const FloraCard: React.FC = () => {
+const BookCard: React.FC = () => {
   const [visible, setVisible] = useState(false);
 
   return (
@@ -27,7 +27,7 @@ const FloraCard: React.FC = () => {
         visible={visible}
         onOk={() => setVisible(false)}
         onCancel={() => setVisible(false)}
-        bodyStyle={{ height: "800px", padding: "40px" }}
+        bodyStyle={{ height: '800px', padding: '40px' }}
         width={600}
       >
         <div className={styles.modalBox}>
@@ -47,4 +47,4 @@ const FloraCard: React.FC = () => {
   );
 };
 
-export default FloraCard;
+export default BookCard;

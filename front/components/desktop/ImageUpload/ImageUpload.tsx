@@ -1,15 +1,15 @@
-import { useState } from "react";
-import Image from "next/image";
-import styles from "./ImageUpload.module.css";
-import TopHeaderContainer from "../TopHeader/TopHeader";
-import GuideModal from "./guide_modal/GuideModal";
-import { Button, Modal } from "antd";
-import { CloseOutlined } from "@ant-design/icons";
+import { useState } from 'react';
+import Image from 'next/image';
+import styles from './ImageUpload.module.css';
+import TopHeaderContainer from '../TopHeader/TopHeader';
+import GuideModal from './guide_modal/GuideModal';
+import { Button, Modal } from 'antd';
+import { CloseOutlined } from '@ant-design/icons';
 
 const ImageUpload: React.FC = () => {
   const [visible, setVisible] = useState(false);
   return (
-    <>
+    <div>
       <TopHeaderContainer />
       <div className={styles.uploadContainer}>
         <div className={styles.uploadBox}>
@@ -39,7 +39,7 @@ const ImageUpload: React.FC = () => {
       </div>
 
       <GuideModal visible={visible} />
-    </>
+    </div>
   );
 };
 
