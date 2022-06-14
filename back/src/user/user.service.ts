@@ -23,6 +23,11 @@ export class UserService {
     private readonly userRepository: Repository<User>,
     private readonly jwtService: JwtService,
   ) {}
+  private users: User[] = [];
+  async getAll(): Promise<User[]> {
+    const users = await this.users;
+    return users;
+  }
 
   async createUser(createUserDto: CreateUserDto): Promise<User> {
     const { username, email, password } = createUserDto;
