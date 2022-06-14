@@ -46,7 +46,12 @@ const BookContentCard: React.FC<{
           footer={null}
         >
           <div className={styles.modalImageBox}>
-            <Image src={src} layout="fill" objectFit="cover" />
+            <Image
+              src={src}
+              layout="fill"
+              objectFit="cover"
+              style={{ width: '100%', height: '100%' }}
+            />
           </div>
           <div className={styles.modalBoxText}>
             <p className={styles.plantName}>{name}</p>

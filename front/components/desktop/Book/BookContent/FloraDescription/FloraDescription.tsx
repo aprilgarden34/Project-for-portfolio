@@ -12,7 +12,7 @@ const FloraDescription = [
     date: '12-3월',
     month: '[12, 1, 2, 3]',
     season: "['겨울', '봄']",
-    src: 'https://dbscthumb-phinf.pstatic.net/3041_000_1/20140520152328766_44DZAWPEL.jpg/2010060717441223.jpg?type=m4500_4500_fst_n&wm=Y',
+    src: 'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjAzMjFfMjU5%2FMDAxNjQ3ODUxMDYzNDEz.iR34RVIZuLpy4vkOUbWh43zPER5GrDsm0OZFDwCR5Q4g.7rePuQ2yXGc-zmupSfEoOUFBSramTxQHuv2wj_0CuJYg.JPEG.mushroompage%2F1647849151201.jpg&type=sc960_832',
   },
   {
     id: 26901,

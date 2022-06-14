@@ -34,7 +34,7 @@ const BookContent: React.FC = () => {
                   <BookContentCard
                     span={12}
                     key={`key_${index}`}
-                    src="/images/참나무.jpg"
+                    src={item.src}
                     name={item.name}
                     month={item.month}
                     flower_lang={item.flower_lang}
