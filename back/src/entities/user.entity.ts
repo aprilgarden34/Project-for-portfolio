@@ -48,6 +48,10 @@ export class User extends BaseEntity {
   @Exclude()
   currentHashedRefreshToken?: string;
 
+  @Column({ default: false })
+  @ApiPropertyOptional({ description: '회원 탈퇴 여부' })
+  isDeleted: boolean;
+
   @CreateDateColumn()
   createdDate?: Date;
 

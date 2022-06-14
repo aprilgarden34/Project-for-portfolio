@@ -14,6 +14,7 @@ import { LoginUserDto } from './dto/login-user.dto';
 import { JwtService } from '@nestjs/jwt';
 import { UserOauthDto } from './dto/user.oauth.dto';
 import { v4 as uuidv4 } from 'uuid';
+import { UpdateUserDto } from './dto/update-user.dto';
 
 @Injectable()
 export class UserService {
@@ -138,5 +139,31 @@ export class UserService {
     const payload = { email };
     const accessToken = await this.jwtService.sign(payload);
     return { accessToken, email: user.email, username: user.username };
+  }
+
+  // update
+  async updateUser(id, updateUserDto: UpdateUserDto): Promise<User> {
+    const { description, username } = updateUserDto;
+    const user = await this.userRepository.findOne({ where: { id } });
+
+    user.description = description;
+    user.username = username;
+    try {
+      const userResult = await this.userRepository.save(user);
+      return userResult;
+    } catch (err) {
+      throw new InternalServerErrorException();
+    }
+  }
+
+  async deleteUser(id): Promise<User> {
+    const user = await this.userRepository.findOne({ where: { id } });
+    user.isDeleted = true;
+    try {
+      const userResult = await this.userRepository.save(user);
+      return userResult;
+    } catch (err) {
+      throw new InternalServerErrorException();
+    }
   }
 }
