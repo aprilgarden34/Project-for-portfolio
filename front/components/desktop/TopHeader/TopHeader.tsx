@@ -1,7 +1,7 @@
-import styles from "./TopHedaer.module.css";
-import TopHeaderTitle from "./TopHeaderTitle/TopHeaderTitle";
-import TopHeaderMenu from "./TopHeaderMenu/TopHeaderMenu";
-import TopHeaderUserMenu from "./TopHeaderUserMenu/TopHeaderUserMenu";
+import styles from './TopHedaer.module.scss';
+import TopHeaderTitle from './TopHeaderTitle/TopHeaderTitle';
+import TopHeaderMenu from './TopHeaderMenu/TopHeaderMenu';
+import TopHeaderUserMenu from './TopHeaderUserMenu/TopHeaderUserMenu';
 
 const TopHeader: React.FC = () => {
   return (

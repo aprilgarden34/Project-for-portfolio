@@ -1,5 +1,5 @@
-import styles from "./TopHeaderMenu.module.css";
-import { Button } from "antd";
+import styles from './TopHeaderMenu.module.scss';
+import { Button } from 'antd';
 
 const TopHeaderMenu: React.FC = () => {
   return (

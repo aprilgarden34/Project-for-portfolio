@@ -1,4 +1,4 @@
-import styles from "./TopHeaderTitle.module.css";
+import styles from './TopHeaderTitle.module.scss';
 
 const TopHeaderTitle: React.FC = () => {
   return <h1 className={styles.TopHeaderTitle}>SIMMANI</h1>;
