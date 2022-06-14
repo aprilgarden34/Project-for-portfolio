@@ -14,7 +14,8 @@ import { Community } from './community.entity';
 import { Exclude } from 'class-transformer';
 
 @Entity()
-@Unique(['email', 'id'])
+@Unique(['email'])
+@Unique(['id'])
 export class User extends BaseEntity {
   @PrimaryColumn()
   @ApiPropertyOptional({ description: 'id' })

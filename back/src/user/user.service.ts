@@ -23,7 +23,8 @@ export class UserService {
     private readonly jwtService: JwtService,
   ) {}
 
-  async createUser({ username, password, email }): Promise<User> {
+  async createUser(createUserDto: CreateUserDto): Promise<User> {
+    const { username, email, password } = createUserDto;
     const salt = await bcrypt.genSalt();
     const hashedPassword = await bcrypt.hash(password, salt);
     const uuid = uuidv4();
@@ -37,15 +38,14 @@ export class UserService {
 
     try {
       const userResult = await this.userRepository.save(user);
-      console.log(userResult);
+      return userResult;
     } catch (error) {
       if (error.code === '23505') {
-        throw new ConflictException('이미 존재하는 username 입니다.');
+        throw new ConflictException('이미 존재하는 email 입니다.');
       } else {
         throw new InternalServerErrorException();
       }
     }
-    return user;
   }
 
   async signIn(
