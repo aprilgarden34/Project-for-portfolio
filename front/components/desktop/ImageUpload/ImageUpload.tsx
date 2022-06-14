@@ -13,15 +13,13 @@ const ImageUpload: React.FC = () => {
       <TopHeaderContainer />
       <div className={styles.uploadContainer}>
         <div className={styles.uploadBox}>
-          <p
-            className={styles.guideMessage}
-            children="도감에 넣을 사진을 찍어주세요"
-          />
+          <p className={styles.guideMessage}>도감에 넣을 사진을 찍어주세요</p>
           <Button
             className={styles.guideButton}
             onClick={() => setVisible(true)}
-            children="촬영 가이드"
-          />
+          >
+            촬영 가이드
+          </Button>
           <div className={styles.imagePreview}>
             <Image
               src="/images/flora_header_image.jpg"
@@ -31,10 +29,7 @@ const ImageUpload: React.FC = () => {
             />
           </div>
           <Button className={styles.imageUploadButton} children="+" />
-          <Button
-            className={styles.imageClassificationButton}
-            children="판별"
-          />
+          <Button className={styles.imageClassificationButton}>판별 </Button>
         </div>
       </div>
 
