@@ -1,4 +1,4 @@
-import styles from './userProfileEdit.module.css';
+import styles from './userProfileEdit.module.scss';
 import { Button } from 'antd';
 
 const UserProfileEdit: React.FC = () => {

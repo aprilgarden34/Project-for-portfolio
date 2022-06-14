@@ -1,4 +1,4 @@
-import styles from "./SearchOption.module.css";
+import styles from './SearchOption.module.scss';
 
 const SearchOption: React.FC = () => {
   return (

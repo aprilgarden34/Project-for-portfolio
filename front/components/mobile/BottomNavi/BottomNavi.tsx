@@ -1,5 +1,4 @@
-import styles from './BottomNavi.module.css';
-import { Typography, Button, Form, message, Input, Card } from 'antd';
+import styles from './BottomNavi.module.scss';
 import {
   UnorderedListOutlined,
   HomeFilled,

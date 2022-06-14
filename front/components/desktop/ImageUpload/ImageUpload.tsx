@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Image from 'next/image';
-import styles from './ImageUpload.module.css';
+import styles from './ImageUpload.module.scss';
 import TopHeaderContainer from '../TopHeader/TopHeader';
 import GuideModal from './guide_modal/GuideModal';
 import { Button, Modal } from 'antd';

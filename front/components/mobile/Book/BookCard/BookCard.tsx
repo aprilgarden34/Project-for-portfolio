@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Image from 'next/image';
-import styles from './BookCard.module.css';
+import styles from './BookCard.module.scss';
 import { Modal } from 'antd';
 
 const BookCard: React.FC = () => {

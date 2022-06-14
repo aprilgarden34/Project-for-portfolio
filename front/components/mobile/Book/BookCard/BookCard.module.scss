@@ -19,10 +19,10 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-}
 
-.card:hover {
-  transform: scale(1.05) translateY(3px);
+  :hover {
+    transform: scale(1.05) translateY(3px);
+  }
 }
 
 .imageBox {

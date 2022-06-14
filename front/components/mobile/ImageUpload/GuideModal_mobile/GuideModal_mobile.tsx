@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import styles from './GuideModal_mobile.module.css';
+import styles from './GuideModal_mobile.module.scss';
 import { Modal } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 import GuideModalCard from './GuideModal_card/GuideModalCard';

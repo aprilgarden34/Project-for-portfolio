@@ -5,8 +5,7 @@ import UserProfileEdit from './userProfileEdit/userProfileEdit';
 import UserBadge from './userInformation/userBadge/UserBadge';
 import UserLiked from './userInformation/userLiked/UserLiked';
 import UserPost from './userInformation/userPost/UserPost';
-
-import styles from './Profile_mobile.module.css';
+import styles from './Profile_mobile.module.scss';
 
 const Profile_mobile: React.FC = () => {
   return (

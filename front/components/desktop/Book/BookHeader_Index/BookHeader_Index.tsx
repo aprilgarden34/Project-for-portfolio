@@ -1,4 +1,4 @@
-import styles from './BookHeader_Index.module.css';
+import styles from './BookHeader_Index.module.scss';
 import Profile from './profile/Profile';
 import SearchOption from './search_option/SearchOption';
 import SearchBar from './search_bar/SearchBar';

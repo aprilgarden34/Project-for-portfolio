@@ -17,16 +17,16 @@
   align-items: center;
   padding-top: 20px;
   color: black;
-}
 
-.searchOption p {
-  color: black;
-  font-size: 18px;
-  font-weight: 800;
-  cursor: pointer;
-}
+  p {
+    color: black;
+    font-size: 18px;
+    font-weight: 800;
+    cursor: pointer;
+  }
 
-.searchOption p:hover {
-  color: green;
-  transform: scale(1.1);
+  p:hover {
+    color: green;
+    transform: scale(1.1);
+  }
 }

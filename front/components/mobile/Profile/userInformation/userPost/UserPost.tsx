@@ -1,5 +1,5 @@
-import styles from './UserPost.module.css';
-import { Avatar, Button } from 'antd';
+import styles from './UserPost.module.scss';
+import { Avatar } from 'antd';
 import { SnippetsTwoTone } from '@ant-design/icons';
 
 const UserPost: React.FC = () => {

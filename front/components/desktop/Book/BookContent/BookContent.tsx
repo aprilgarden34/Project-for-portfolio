@@ -1,12 +1,10 @@
 import { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import styles from './BookContent.module.css';
+import styles from './BookContent.module.scss';
 import Image from 'next/image';
 import BookContentCard from './BookContentCard/BookContentCard';
 import { Grid, Row, Col, Card, Avatar, Input } from 'antd';
 import { DoubleLeftOutlined, DoubleRightOutlined } from '@ant-design/icons';
-import { clear } from 'console';
-import { Value } from 'sass';
 
 const BookContent: React.FC = () => {
   const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];

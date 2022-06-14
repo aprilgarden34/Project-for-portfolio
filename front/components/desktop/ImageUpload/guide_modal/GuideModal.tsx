@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import styles from './GuideModal.module.css';
-import { Button, Modal, Avatar } from 'antd';
-import { CloseOutlined, CheckCircleOutlined } from '@ant-design/icons';
+import styles from './GuideModal.module.scss';
+import { Modal } from 'antd';
+import { CloseOutlined } from '@ant-design/icons';
 import GuideModalCard from './GuideModal_card/GuideModalCard';
 import CardDescription from './GuideModal_card/CardDescription';
 

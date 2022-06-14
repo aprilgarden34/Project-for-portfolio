@@ -1,6 +1,10 @@
-.alertMessage p {
-  font-size: 1.3rem;
-  font-weight: 600;
+.alertMessage {
+  margin-top: 3rem;
+
+  p {
+    font-size: 1rem;
+    font-weight: 600;
+  }
 }
 
 .tipBoxWrapper {
@@ -12,12 +16,13 @@
 .tipBox {
   width: 100%;
   height: 30%;
-  margin: 4rem 1rem;
-}
+  margin-top: 1.5rem;
+  margin-bottom: 4rem;
 
-.tipBox p {
-  font-size: 1rem;
-  font-weight: 600;
+  p {
+    font-size: 1rem;
+    font-weight: 600;
+  }
 }
 
 .flexBox {

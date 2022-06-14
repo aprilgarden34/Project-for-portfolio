@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Image from 'next/image';
-import styles from './BookContentCard.module.css';
+import styles from './BookContentCard.module.scss';
 import { Card, Col, Row, Modal, Button } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 const { Meta } = Card;

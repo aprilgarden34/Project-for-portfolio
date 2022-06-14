@@ -38,10 +38,10 @@
 .avatar {
   background-color: #19c864;
   cursor: pointer;
-}
 
-.avatar:hover {
-  background-color: red;
+  :hover {
+    background-color: red;
+  }
 }
 
 .CardTitle {

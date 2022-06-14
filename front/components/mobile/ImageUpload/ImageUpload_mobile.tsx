@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import styles from './ImageUpload_mobile.module.css';
+import styles from './ImageUpload_mobile.module.scss';
 import TopNavi from '../TopNavi/TopNavi';
 import BottomNavi from '../BottomNavi/BottomNavi';
 import GuideModal_mobile from './GuideModal_mobile/GuideModal_mobile';

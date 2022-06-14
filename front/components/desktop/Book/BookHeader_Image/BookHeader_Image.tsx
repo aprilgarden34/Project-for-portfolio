@@ -1,4 +1,4 @@
-import styles from './BookHeader_Image.module.css';
+import styles from './BookHeader_Image.module.scss';
 import Image from 'next/image';
 
 const BookHeader_Image: React.FC = () => {
