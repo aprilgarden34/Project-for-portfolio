@@ -8,6 +8,7 @@ import { Community } from 'src/entities/community.entity';
 import { User } from 'src/entities/user.entity';
 import { Repository } from 'typeorm';
 import { CreateCommunityDto } from './dto/create-community.dto';
+import { DeleteCommunityDto } from './dto/delete-community.dto';
 
 @Injectable()
 export class CommunityService {
@@ -49,12 +50,14 @@ export class CommunityService {
     }
   }
 
-  async deleteOne(community_id: number): Promise<void> {
-    const community = await this.communityRepository.delete(community_id);
+  async deleteOne(deleteCommunityDto: DeleteCommunityDto): Promise<void> {
+    const community = await this.communityRepository.delete(
+      deleteCommunityDto.id,
+    );
 
     if (community.affected === 0) {
       throw new NotFoundException(
-        `ID가 ${community_id}인 게시글이 존재하지 않습니다.`,
+        `ID가 ${deleteCommunityDto.id}인 게시글이 존재하지 않습니다.`,
       );
     }
   }

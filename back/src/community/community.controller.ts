@@ -1,8 +1,9 @@
-import { Body, Controller, Delete, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Param, Post, Query } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { Community } from 'src/entities/community.entity';
 import { CommunityService } from './community.service';
 import { CreateCommunityDto } from './dto/create-community.dto';
+import { DeleteCommunityDto } from './dto/delete-community.dto';
 
 @ApiTags('커뮤니티 API')
 @Controller('community')
@@ -24,7 +25,9 @@ export class CommunityController {
   }
 
   @Delete(':community_id')
-  async deleteCommunity(@Param('community_id') community_id: number) {
-    return this.communityService.deleteOne(community_id);
+  async deleteCommunity(
+    @Query('community_id') deleteCommunityDto: DeleteCommunityDto,
+  ) {
+    return this.communityService.deleteOne(deleteCommunityDto);
   }
 }
