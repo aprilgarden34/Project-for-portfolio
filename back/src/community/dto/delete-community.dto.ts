@@ -4,5 +4,5 @@ import { IsNumber } from 'class-validator';
 export class DeleteCommunityDto {
   @IsNumber()
   @ApiProperty({ description: '게시글 id' })
-  id: number;
+  community_id: number;
 }
