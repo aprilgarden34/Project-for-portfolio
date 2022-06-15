@@ -8,7 +8,7 @@ import {
   Query,
   UsePipes,
 } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Community } from 'src/entities/community.entity';
 import { CommunityService } from './community.service';
 import { CreateCommunityDto } from './dto/create-community.dto';
@@ -34,10 +34,13 @@ export class CommunityController {
   }
 
   @Delete()
-  async deleteCommunity(
-    @Param('community_id')
-    deleteCommunityDto: DeleteCommunityDto,
-  ) {
+  @ApiOperation({
+    summary: 'community 삭제',
+    description: '해당 community_id에 맞는 게시글 삭제',
+  })
+  @ApiResponse({ description: '삭제 성공' })
+  @ApiBody({ type: DeleteCommunityDto })
+  async deleteCommunity(@Body() deleteCommunityDto: DeleteCommunityDto) {
     return this.communityService.deleteOne(deleteCommunityDto);
   }
 }

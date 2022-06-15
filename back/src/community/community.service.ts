@@ -51,14 +51,11 @@ export class CommunityService {
   }
 
   async deleteOne(deleteCommunityDto: DeleteCommunityDto): Promise<void> {
-    const community = await this.communityRepository.delete(
-      deleteCommunityDto.community_id,
-    );
+    const id = deleteCommunityDto.id;
+    const community = await this.communityRepository.delete(id);
 
     if (community.affected === 0) {
-      throw new NotFoundException(
-        `ID가 ${deleteCommunityDto.community_id}인 게시글이 존재하지 않습니다.`,
-      );
+      throw new NotFoundException(`ID가 ${id}인 게시글이 존재하지 않습니다.`);
     }
   }
 }

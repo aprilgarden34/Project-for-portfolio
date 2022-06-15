@@ -1,8 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNumber } from 'class-validator';
+import { IsNumber, IsString } from 'class-validator';
 
 export class DeleteCommunityDto {
   @IsNumber()
   @ApiProperty({ description: '게시글 id' })
-  community_id: number;
+  id: number;
 }
