@@ -4,12 +4,16 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
+  Unique,
 } from 'typeorm';
 import { ApiPropertyOptional } from '@nestjs/swagger';
 import { User } from './user.entity';
+import { Like } from './like.entity';
 
 @Entity()
+@Unique(['user_id'])
 export class Community extends BaseEntity {
   @PrimaryGeneratedColumn()
   @ApiPropertyOptional({ description: 'id' })
@@ -31,6 +35,13 @@ export class Community extends BaseEntity {
   @ApiPropertyOptional({ description: '날짜' })
   createdAt: string;
 
-  @ManyToOne(() => User, (user) => user.id)
-  user_id: User;
+  @Column()
+  user_id: string;
+
+  @ManyToOne((type) => User)
+  @JoinColumn({ name: 'user_id', referencedColumnName: 'id' })
+  user: User;
+
+  @OneToMany(() => Like, (like) => like.id)
+  like_id: Like;
 }
