@@ -1,7 +1,7 @@
-import styles from './TopNavi.module.scss';
+import styles from './TopHeader.module.scss';
 import { UserOutlined, BarsOutlined } from '@ant-design/icons';
 
-const TopNavi: React.FC = () => {
+const TopHeader: React.FC = () => {
   return (
     <>
       <div className={styles.titleBox}>
@@ -13,4 +13,4 @@ const TopNavi: React.FC = () => {
   );
 };
 
-export default TopNavi;
+export default TopHeader;
