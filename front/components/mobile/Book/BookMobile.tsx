@@ -1,18 +1,17 @@
-import TopNavi from '../TopNavi/TopNavi';
+import TopNavi from '../TopHeader/TopHeader';
 import SearchBar from './SearchBar/SearchBar';
-import FloraCard from './BookCard/BookCard';
+import BookContent from './BookContent/BookContent';
 import BottomNavi from '../BottomNavi/BottomNavi';
-import styles from './Book_mobile.module.scss';
+import styles from './BookMobile.module.scss';
 
-const Book_mobile: React.FC = () => {
+const BookMobile: React.FC = () => {
   return (
     <>
       <div className={styles.container}>
         <TopNavi />
         <div className={styles.middleContainer}>
           <SearchBar />
-          <FloraCard />
-          <FloraCard />
+          <BookContent />
         </div>
         <BottomNavi />
       </div>
@@ -20,4 +19,4 @@ const Book_mobile: React.FC = () => {
   );
 };
 
-export default Book_mobile;
+export default BookMobile;

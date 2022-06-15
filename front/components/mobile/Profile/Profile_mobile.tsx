@@ -1,4 +1,4 @@
-import TopNavi from '../TopNavi/TopNavi';
+import TopNavi from '../TopHeader/TopHeader';
 import BottomNavi from '../BottomNavi/BottomNavi';
 import UserSummary from './userSummary/userSummary';
 import UserProfileEdit from './userProfileEdit/userProfileEdit';
