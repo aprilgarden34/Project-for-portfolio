@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import ReactFullpage from '@fullpage/react-fullpage';
 import Head from 'next/head';
 import FirstPage from '../FirstPage';
+import SecondPage from '../SecondPage';
+import ThirdPage from '../ThirdPage';
+import { AutoComplete } from 'antd';
 
 const Hooks = () => {
   return (
@@ -18,14 +21,34 @@ const Hooks = () => {
         scrollHorizontally={true}
         render={() => (
           <ReactFullpage.Wrapper>
-            <div key={1} className="section">
+            <div
+              key={1}
+              className="section"
+              style={{ width: '1200px', margin: 'auto' }}
+            >
               <FirstPage />
             </div>
-            <div key={2} className="section">
-              <h1>2</h1>
+            <div
+              key={2}
+              className="section"
+              style={{
+                width: '1200px',
+                position: 'relative',
+                margin: 'auto',
+              }}
+            >
+              <SecondPage />
             </div>
-            <div key={3} className="section">
-              <h1>3</h1>
+            <div
+              key={3}
+              className="section"
+              style={{
+                width: '1200px',
+                position: 'relative',
+                margin: 'auto',
+              }}
+            >
+              <ThirdPage />
             </div>
           </ReactFullpage.Wrapper>
         )}
