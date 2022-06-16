@@ -20,7 +20,7 @@ export class CommunityService {
   ) {}
 
   async create(
-    user_id: number,
+    user_id: string,
     createCommunityDto: CreateCommunityDto,
   ): Promise<Community> {
     const { photo_url, title, description } = createCommunityDto;

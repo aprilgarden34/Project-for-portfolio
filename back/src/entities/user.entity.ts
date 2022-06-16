@@ -14,11 +14,11 @@ import { Community } from './community.entity';
 import { Exclude } from 'class-transformer';
 
 @Entity()
-@Unique(['email'])
+@Unique(['email', 'id'])
 export class User extends BaseEntity {
   @PrimaryGeneratedColumn()
   @ApiPropertyOptional({ description: 'id' })
-  id!: number;
+  id!: string;
 
   @Column()
   @ApiPropertyOptional({ description: '닉네임' })

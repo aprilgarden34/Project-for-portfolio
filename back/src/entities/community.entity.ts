@@ -13,11 +13,11 @@ import { User } from './user.entity';
 import { Like } from './like.entity';
 
 @Entity()
-@Unique(['user_id'])
+@Unique(['userId', 'id'])
 export class Community extends BaseEntity {
   @PrimaryGeneratedColumn()
   @ApiPropertyOptional({ description: 'id' })
-  id: number;
+  id: string;
 
   @Column()
   @ApiPropertyOptional({ description: '사진 경로' })
@@ -36,11 +36,12 @@ export class Community extends BaseEntity {
   createdAt: string;
 
   @Column()
-  user_id: string;
+  userId: string;
 
-  @ManyToOne((type) => User)
-  @JoinColumn({ name: 'user_id', referencedColumnName: 'id' })
-  user: User;
+  // user_id column 생성
+  @ManyToOne(() => User, (user) => user.id)
+  @JoinColumn()
+  user_id: User;
 
   @OneToMany(() => Like, (like) => like.id)
   like_id: Like;
