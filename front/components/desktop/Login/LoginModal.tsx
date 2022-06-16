@@ -2,12 +2,23 @@ import { useState, useEffect } from 'react';
 import styles from './LoginModal.module.scss';
 import { Modal, Button, Input } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
+import * as API from '../../../api/api';
 
 const LoginModal: React.FC = () => {
   const [visibleBoolean, setVisibleBoolean] = useState(false);
   useEffect(() => {
     setVisibleBoolean(true);
   }, []);
+
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+
+  const submitLoginInfo = () => {
+    API.post('signin', {
+      email: email,
+      password: password,
+    }).then((response) => console.log(response));
+  };
 
   return (
     <>
@@ -40,6 +51,7 @@ const LoginModal: React.FC = () => {
                 className={styles.idInput}
                 type="text"
                 placeholder="이메일을 입력해주세요"
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className={styles.grid1_3}></div>
@@ -50,6 +62,7 @@ const LoginModal: React.FC = () => {
                 className={styles.passwordInput}
                 type="password"
                 placeholder="비밀번호를 입력해주세요"
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <div className={styles.grid2_3}></div>
@@ -63,7 +76,9 @@ const LoginModal: React.FC = () => {
           </div>
           <div className={styles.registerBox}>
             <p>계정이 없으신가요?</p>
-            <Button className={styles.registerButton}>회원가입</Button>
+            <Button className={styles.registerButton} onClick={submitLoginInfo}>
+              회원가입
+            </Button>
           </div>
         </div>
       </Modal>

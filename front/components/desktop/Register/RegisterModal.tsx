@@ -2,12 +2,25 @@ import styles from './RegisterModal.module.scss';
 import { useState, useEffect } from 'react';
 import { Modal, Button, Input } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
+import * as API from '../../../api/api';
 
 const RegisterModal: React.FC = () => {
   const [visibleBoolean, setVisibleBoolean] = useState(false);
   useEffect(() => {
     setVisibleBoolean(true);
   }, []);
+
+  const [email, setEmail] = useState<string>('');
+  const [nickname, setNickname] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+
+  const submitUserInfo = () => {
+    API.post('signup', {
+      email: email,
+      username: nickname,
+      password: password,
+    }).then((response) => console.log(response));
+  };
 
   return (
     <>
@@ -40,6 +53,7 @@ const RegisterModal: React.FC = () => {
                 className={styles.idInput}
                 type="text"
                 placeholder="이메일을 입력해주세요"
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className={styles.grid1_3}></div>
@@ -50,6 +64,7 @@ const RegisterModal: React.FC = () => {
                 className={styles.nicknameInput}
                 type="text"
                 placeholder="닉네임을 입력해주세요"
+                onChange={(e) => setNickname(e.target.value)}
               />
             </div>
             <div className={styles.grid2_3}></div>
@@ -61,13 +76,16 @@ const RegisterModal: React.FC = () => {
                 className={styles.passwordInput}
                 type="password"
                 placeholder="비밀번호를 입력해주세요"
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <div className={styles.grid3_3}></div>
           </div>
 
           <div className={styles.loginButtonBox}>
-            <Button className={styles.loginButton}>회원가입</Button>
+            <Button className={styles.loginButton} onClick={submitUserInfo}>
+              회원가입
+            </Button>
           </div>
         </div>
       </Modal>
