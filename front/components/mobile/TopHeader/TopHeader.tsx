@@ -6,7 +6,7 @@ const TopHeader: React.FC = () => {
     <>
       <div className={styles.titleBox}>
         <BarsOutlined style={{ fontSize: '32px', color: 'white' }} />
-        <h1 className={styles.title}>SIMMANI</h1>
+        <h2 className={styles.title}>나만의 식물도감</h2>
         <UserOutlined style={{ fontSize: '32px', color: 'white' }} />
       </div>
     </>
