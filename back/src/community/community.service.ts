@@ -4,6 +4,7 @@ import {
   InternalServerErrorException,
   NotFoundException,
 } from '@nestjs/common';
+import { catchError } from 'rxjs';
 import { Community } from 'src/entities/community.entity';
 import { User } from 'src/entities/user.entity';
 import { Repository } from 'typeorm';
@@ -36,6 +37,7 @@ export class CommunityService {
       photo_url,
       title,
       description,
+      userId: user_id,
       createdAt: nowDate.toLocaleString(),
     });
     console.log(community);
@@ -57,5 +59,11 @@ export class CommunityService {
     if (community.affected === 0) {
       throw new NotFoundException(`ID가 ${id}인 게시글이 존재하지 않습니다.`);
     }
+  }
+
+  async findAll(): Promise<Community[]> {
+    const community = await this.communityRepository.find();
+
+    return community;
   }
 }

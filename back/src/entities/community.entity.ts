@@ -6,6 +6,7 @@ import {
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
+  RelationId,
   Unique,
 } from 'typeorm';
 import { ApiPropertyOptional } from '@nestjs/swagger';
@@ -13,7 +14,7 @@ import { User } from './user.entity';
 import { Like } from './like.entity';
 
 @Entity()
-@Unique(['userId', 'id'])
+@Unique(['id', 'userId'])
 export class Community extends BaseEntity {
   @PrimaryGeneratedColumn()
   @ApiPropertyOptional({ description: 'id' })
@@ -35,13 +36,13 @@ export class Community extends BaseEntity {
   @ApiPropertyOptional({ description: '날짜' })
   createdAt: string;
 
-  @Column()
-  userId: string;
-
-  // user_id column 생성
   @ManyToOne(() => User, (user) => user.id)
   @JoinColumn()
   user_id: User;
+
+  @Column()
+  @RelationId((community: Community) => community.user_id)
+  userId: string;
 
   @OneToMany(() => Like, (like) => like.id)
   like_id: Like;

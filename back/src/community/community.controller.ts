@@ -2,13 +2,21 @@ import {
   Body,
   Controller,
   Delete,
+  Get,
   Param,
   ParseIntPipe,
+  Patch,
   Post,
   Query,
   UsePipes,
 } from '@nestjs/common';
-import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBody,
+  ApiOperation,
+  ApiParam,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 import { Community } from 'src/entities/community.entity';
 import { CommunityService } from './community.service';
 import { CreateCommunityDto } from './dto/create-community.dto';
@@ -22,6 +30,12 @@ export class CommunityController {
   // @GetUser() 이용해서 로그인한 유저 정보 가져와야함
   // 임시로 user_id 파라미터 받아서 이용중
   @Post(':user_id')
+  @ApiOperation({
+    summary: 'community 생성',
+    description: '해당 user_id가 작성한 맞는 게시글 생성',
+  })
+  @ApiResponse({ description: '생성 성공' })
+  @ApiBody({ type: CreateCommunityDto })
   async createCommunity(
     @Body() createCommunityDto: CreateCommunityDto,
     @Param('user_id') user_id: string,
@@ -44,6 +58,13 @@ export class CommunityController {
     return this.communityService.deleteOne(deleteCommunityDto);
   }
 
+  // TODO: 게시글 조회
+  @Get()
+  async getCommunities(): Promise<Community[]> {
+    return this.communityService.findAll();
+  }
+
   // TODO: 좋아요 patch
+
   // TODO: 게시글 검색 api (유저이름, 게시글 description, 식물 title)
 }
