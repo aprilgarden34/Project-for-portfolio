@@ -20,7 +20,7 @@ export class Like extends BaseEntity {
   @ManyToOne((type) => Community)
   @JoinColumn([
     { name: 'community_id', referencedColumnName: 'id' },
-    { name: 'user_id', referencedColumnName: 'userId' },
+    //{ name: 'user_id', referencedColumnName: 'userId' },
   ])
   community: Community;
 

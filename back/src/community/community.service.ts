@@ -62,7 +62,9 @@ export class CommunityService {
   }
 
   async findAll(): Promise<Community[]> {
-    const community = await this.communityRepository.find();
+    const community = await this.communityRepository.find({
+      relations: ['user_id'],
+    });
 
     return community;
   }
