@@ -43,4 +43,7 @@ export class CommunityController {
   async deleteCommunity(@Body() deleteCommunityDto: DeleteCommunityDto) {
     return this.communityService.deleteOne(deleteCommunityDto);
   }
+
+  // TODO: 좋아요 patch
+  // TODO: 게시글 검색 api (유저이름, 게시글 description, 식물 title)
 }
