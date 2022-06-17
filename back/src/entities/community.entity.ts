@@ -14,7 +14,7 @@ import { User } from './user.entity';
 import { Like } from './like.entity';
 
 @Entity()
-@Unique(['id'])
+@Unique(['id', 'userId'])
 export class Community extends BaseEntity {
   @PrimaryGeneratedColumn()
   @ApiPropertyOptional({ description: 'id' })
@@ -37,8 +37,10 @@ export class Community extends BaseEntity {
   createdAt: string;
 
   @ManyToOne(() => User, (user) => user.id)
+  @JoinColumn()
   user_id: User;
 
+  @Column()
   @RelationId((community: Community) => community.user_id)
   userId: string;
 

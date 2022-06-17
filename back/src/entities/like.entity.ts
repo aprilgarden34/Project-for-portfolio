@@ -5,6 +5,7 @@ import {
   JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
+  RelationId,
   Unique,
 } from 'typeorm';
 import { Community } from './community.entity';
@@ -20,13 +21,13 @@ export class Like extends BaseEntity {
   @ManyToOne((type) => Community)
   @JoinColumn([
     { name: 'community_id', referencedColumnName: 'id' },
-    //{ name: 'user_id', referencedColumnName: 'userId' },
+    { name: 'user_id', referencedColumnName: 'userId' },
   ])
   community: Community;
 
-  //   @ManyToOne(() => Community, (community) => community.id)
-  //   community_id: Community;
+  // @ManyToOne(() => Community, (community) => community.id)
+  // community_id: Community;
 
-  //   @ManyToOne(() => Community, (community) => community.user_id)
-  //   user_id: User;
+  // @ManyToOne(() => Community, (community) => community.user_id)
+  // user_id: User;
 }
