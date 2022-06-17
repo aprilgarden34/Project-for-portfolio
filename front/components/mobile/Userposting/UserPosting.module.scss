@@ -1,0 +1,17 @@
+.container {
+  width: 420px;
+  height: 932px;
+  background-color: white;
+  display: grid;
+  grid-template-rows: 7% 85% 8%;
+}
+
+.middleContainer {
+  height: 100%;
+  grid-row-start: 2;
+  background-color: ghostwhite;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-y: auto;
+}
