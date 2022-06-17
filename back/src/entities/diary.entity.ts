@@ -13,7 +13,7 @@ import { User } from './user.entity';
 
 @Entity()
 @Unique(['id'])
-export class Book extends BaseEntity {
+export class Diary extends BaseEntity {
   @PrimaryColumn()
   @ApiPropertyOptional({ description: 'id' })
   id!: string;

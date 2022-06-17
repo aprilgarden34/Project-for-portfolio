@@ -22,8 +22,9 @@ import { GoogleAuth } from './guard/google.guard';
 import { AuthGuard } from '@nestjs/passport';
 import { GetUser } from './get-user.decorator';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { BookService } from 'src/book/book.service';
-import { Book } from 'src/entities/book.entity';
+import { DiaryService } from 'src/diary/diary.service';
+import { Diary } from 'src/entities/diary.entity';
+import { CreateDiaryDto } from 'src/diary/dto/diary-create.dto';
 
 @ApiTags('User API')
 @Controller('user')
@@ -31,7 +32,7 @@ export class UserController {
   private logger = new Logger(`UserController`);
   constructor(
     private readonly userService: UserService,
-    private readonly bookService: BookService,
+    private readonly diaryService: DiaryService,
   ) {}
 
   @Post('signup')
@@ -40,14 +41,16 @@ export class UserController {
     description: '유저를 생성한다.',
   })
   @ApiResponse({ description: '회원가입 성공', type: User })
-  async signUp(@Body() createUserDto: CreateUserDto) {
-    //createBookDto: CreateBookDto,
+  async signUp(
+    @Body() createUserDto: CreateUserDto,
+    createDiaryDto: CreateDiaryDto,
+  ) {
     //: Promise<User, Book[]>
     const user: User = await this.userService.createUser(createUserDto);
-    // const books: Book[] = await this.bookService.createBook(createBookDto);
+    // const diarys: Diary[] = await this.diaryService.createDiary(createDiaryDto);
     this.logger.verbose(`User ${user.email} Sign-Up Success! 
     Payload: ${JSON.stringify({ createUserDto })}`);
-    return { user }; //, books
+    return { user }; //, diarys
   }
 
   // TODO: SIM 만! reflesh token 추가 필요
