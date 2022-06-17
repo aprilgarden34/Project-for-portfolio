@@ -15,7 +15,7 @@ const RegisterModal: React.FC = () => {
   const [password, setPassword] = useState<string>('');
 
   const submitUserInfo = () => {
-    API.post('signup', {
+    API.post('user/signup', {
       email: email,
       username: nickname,
       password: password,

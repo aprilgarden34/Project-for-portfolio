@@ -14,7 +14,7 @@ const LoginModal: React.FC = () => {
   const [password, setPassword] = useState<string>('');
 
   const submitLoginInfo = () => {
-    API.post('signin', {
+    API.post('user/signin', {
       email: email,
       password: password,
     }).then((response) => console.log(response));
@@ -68,7 +68,9 @@ const LoginModal: React.FC = () => {
             <div className={styles.grid2_3}></div>
           </div>
           <div className={styles.loginButtonBox}>
-            <Button className={styles.loginButton}>로그인</Button>
+            <Button className={styles.loginButton} onClick={submitLoginInfo}>
+              로그인
+            </Button>
           </div>
           <div className={styles.apiLoginBox}>
             <Button className={styles.cacaoLoginButton}>'</Button>
@@ -76,9 +78,7 @@ const LoginModal: React.FC = () => {
           </div>
           <div className={styles.registerBox}>
             <p>계정이 없으신가요?</p>
-            <Button className={styles.registerButton} onClick={submitLoginInfo}>
-              회원가입
-            </Button>
+            <Button className={styles.registerButton}>회원가입</Button>
           </div>
         </div>
       </Modal>

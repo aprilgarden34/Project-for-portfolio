@@ -1,9 +1,10 @@
 import TopHeader from '../TopHeader/TopHeader';
 import BottomNavi from '../BottomNavi/BottomNavi';
 import SlidingCard from './SlidingCard/SlidingCard';
-import styles from './Community.module.scss';
+import SlideBar from './SlideBar/SlideBar';
+import styles from './CommunityMobile.module.scss';
 
-const Community: React.FC = () => {
+const CommunityMobile: React.FC = () => {
   return (
     <>
       <div className={styles.container}>
@@ -15,7 +16,7 @@ const Community: React.FC = () => {
           </div>
 
           <div className={styles.slidingCardContainer}>
-            <SlidingCard />
+            <SlideBar />
           </div>
         </div>
         <BottomNavi />
@@ -24,4 +25,4 @@ const Community: React.FC = () => {
   );
 };
 
-export default Community;
+export default CommunityMobile;

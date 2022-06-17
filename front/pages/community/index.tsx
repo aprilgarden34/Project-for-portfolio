@@ -1,9 +1,9 @@
-import Community from '../../components/mobile/Community/Community';
+import CommunityMobile from '../../components/mobile/Community/CommunityMobile';
 
 const CommunityPage: React.FC = () => {
   return (
     <>
-      <Community />
+      <CommunityMobile />
     </>
   );
 };
