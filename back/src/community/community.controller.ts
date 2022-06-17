@@ -58,8 +58,13 @@ export class CommunityController {
     return this.communityService.deleteOne(deleteCommunityDto);
   }
 
-  // TODO: 게시글 조회
+  // 게시글 조회
   @Get()
+  @ApiOperation({
+    summary: 'community 전체 조회',
+    description: 'community 조회',
+  })
+  @ApiResponse({ description: '조회 성공', type: Community })
   async getCommunities(): Promise<Community[]> {
     return this.communityService.findAll();
   }
