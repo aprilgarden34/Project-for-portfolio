@@ -4,7 +4,6 @@ import {
   InternalServerErrorException,
   NotFoundException,
 } from '@nestjs/common';
-import { catchError } from 'rxjs';
 import { Community } from 'src/entities/community.entity';
 import { User } from 'src/entities/user.entity';
 import { Repository } from 'typeorm';
