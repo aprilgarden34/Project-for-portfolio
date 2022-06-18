@@ -4,7 +4,7 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
-  PrimaryGeneratedColumn,
+  PrimaryColumn,
   Unique,
 } from 'typeorm';
 import { Community } from './community.entity';
@@ -12,7 +12,7 @@ import { Community } from './community.entity';
 @Entity()
 @Unique(['id'])
 export class Like extends BaseEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryColumn({ type: 'varchar', name: 'id' })
   @ApiPropertyOptional({ description: 'id' })
   id: string;
 
