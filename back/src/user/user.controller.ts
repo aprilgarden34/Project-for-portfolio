@@ -8,10 +8,18 @@ import {
   Req,
   HttpStatus,
   UseGuards,
+  Patch,
+  Param,
+  ParseUUIDPipe,
 } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UserService } from './user.service';
-import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import {
+  ApiTags,
+  ApiOperation,
+  ApiResponse,
+  ApiBearerAuth,
+} from '@nestjs/swagger';
 import { User } from 'src/entities/user.entity';
 import { LoginUserDto } from './dto/login-user.dto';
 import { UserOauthDto } from './dto/user.oauth.dto';
@@ -19,12 +27,19 @@ import { KakaoAuth } from './guard/kakao.guard';
 import { GoogleAuth } from './guard/google.guard';
 import { AuthGuard } from '@nestjs/passport';
 import { GetUser } from './get-user.decorator';
+import { UpdateUserDto } from './dto/update-user.dto';
+import { DiaryService } from 'src/diary/diary.service';
+import { Diary } from 'src/entities/diary.entity';
+import { CreateDiaryDto } from 'src/diary/dto/diary-create.dto';
 
 @ApiTags('User API')
 @Controller('user')
 export class UserController {
   private logger = new Logger(`UserController`);
-  constructor(private readonly userService: UserService) {}
+  constructor(
+    private readonly userService: UserService,
+    private readonly diaryService: DiaryService,
+  ) {}
 
   @Post('signup')
   @ApiOperation({
@@ -32,11 +47,18 @@ export class UserController {
     description: '유저를 생성한다.',
   })
   @ApiResponse({ description: '회원가입 성공', type: User })
-  async signUp(@Body() createUserDto: CreateUserDto): Promise<User> {
+  async signUp(
+    @Body() createUserDto: CreateUserDto,
+    // createDiaryDto: CreateDiaryDto,
+  ) {
+    //: Promise<User, Book[]>
     const user: User = await this.userService.createUser(createUserDto);
+    // const diarys: Diary[] = await this.diaryService.createDiary({
+    //   user_id: user.id,
+    // });
     this.logger.verbose(`User ${user.email} Sign-Up Success! 
-    Payload: ${JSON.stringify(createUserDto)}`);
-    return user;
+    Payload: ${JSON.stringify({ createUserDto })}`);
+    return { user }; //, diarys
   }
 
   // TODO: SIM 만! reflesh token 추가 필요
@@ -63,7 +85,6 @@ export class UserController {
     const newAccessToken = await this.userService.refreshToken(user);
     return newAccessToken;
   }
-  // TODO: 회원 탈퇴(soft delete? 복원? 논의 필요)
 
   // oauth kakao, google 회원가입, 로그인
   // kakao login
@@ -122,8 +143,37 @@ export class UserController {
     return { accessToken, email, username };
   }
 
-  // TODO: 회원 정보 수정
-}
-function GoogleGuard() {
-  throw new Error('Function not implemented.');
+  // 회원 정보 수정 : description, username
+  @Patch('/update/:id')
+  @ApiBearerAuth('access-token')
+  @ApiOperation({
+    summary: '유저 정보 수정 API',
+    description: '유저 정보를 수정한다.',
+  })
+  @ApiResponse({ description: '유저 정보 수정 성공', type: User })
+  async updateUser(
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Body(ValidationPipe) updateUserDto: UpdateUserDto,
+  ): Promise<User> {
+    const user: User = await this.userService.updateUser(id, updateUserDto);
+    this.logger.verbose(`User ${updateUserDto.username} update Success! 
+      Payload: ${JSON.stringify(user)}`);
+    return user;
+  }
+
+  // 회원 탈퇴 (soft delete)
+  @Patch('/delete/:id')
+  @ApiOperation({
+    summary: '유저 회원 탈퇴 API',
+    description: '유저 회원 탈퇴를 한다.',
+  })
+  @ApiResponse({ description: '유저 회원 탈퇴 성공', type: User })
+  async deleteUser(
+    @Param('id', new ParseUUIDPipe()) id: string,
+  ): Promise<User> {
+    const user: User = await this.userService.deleteUser(id);
+    this.logger.verbose(`User ${id} delete Success! 
+      Payload: ${JSON.stringify(user)}`);
+    return user;
+  }
 }

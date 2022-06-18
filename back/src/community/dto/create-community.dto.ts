@@ -1,17 +1,17 @@
-import { ApiPropertyOptional } from '@nestjs/swagger';
+import { ApiProperty } from '@nestjs/swagger';
 import { IsString } from 'class-validator';
 
 export class CreateCommunityDto {
   @IsString()
-  @ApiPropertyOptional({ description: '사진 경로' })
+  @ApiProperty({ description: '사진 경로' })
   photo_url: string;
 
   @IsString()
-  @ApiPropertyOptional({ description: '식물 이름' })
+  @ApiProperty({ description: '식물 이름' })
   title: string;
 
   @IsString()
-  @ApiPropertyOptional({ description: '유저 정보' })
+  @ApiProperty({ description: '유저 정보' })
   description: string;
 
   // createdAt은 현재 시각으로 그냥 올려줄 예정
