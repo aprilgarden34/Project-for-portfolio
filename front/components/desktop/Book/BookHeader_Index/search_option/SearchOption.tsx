@@ -1,4 +1,4 @@
-import styles from "./SearchOption.module.css";
+import styles from './SearchOption.module.scss';
 
 const SearchOption: React.FC = () => {
   return (
@@ -6,9 +6,9 @@ const SearchOption: React.FC = () => {
       <div className={styles.searchOptionBox}>
         <div className={styles.searchOption}>
           <p>ALL</p>
-          <p>꽃</p>
-          <p>식물</p>
-          <p>나무</p>
+          <p>해금</p>
+          <p>비해금</p>
+          <p>날짜</p>
         </div>
       </div>
     </>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import BookDeskTop from '../../components/desktop/Book/BookDesktop';
-import Book_mobile from '../../components/mobile/Book/Book_mobile';
+import BookMobile from '../../components/mobile/Book/BookMobile';
 
 const Index: React.FC = () => {
   const IsdeskTop = useMediaQuery({
@@ -11,7 +11,7 @@ const Index: React.FC = () => {
   const [displayMode, setDisplayMode] = useState(true);
   useEffect(() => setDisplayMode(IsdeskTop));
 
-  const display = displayMode ? <BookDeskTop /> : <Book_mobile />;
+  const display = displayMode ? <BookDeskTop /> : <BookMobile />;
 
   return <div>{display}</div>;
 };

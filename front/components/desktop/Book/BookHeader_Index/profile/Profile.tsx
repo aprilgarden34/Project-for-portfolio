@@ -1,5 +1,5 @@
-import styles from "./Profile.module.css";
-import Image from "next/image";
+import styles from './Profile.module.scss';
+import Image from 'next/image';
 
 const Profile: React.FC = () => {
   return (

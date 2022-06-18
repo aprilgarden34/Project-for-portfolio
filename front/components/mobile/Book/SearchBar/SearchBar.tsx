@@ -1,11 +1,11 @@
-import styles from "./SearchBar.module.css";
-import { Input, Avatar } from "antd";
+import styles from './SearchBar.module.scss';
+import { Input, Avatar } from 'antd';
 import {
   SearchOutlined,
   HistoryOutlined,
   FileSearchOutlined,
   FileExcelOutlined,
-} from "@ant-design/icons";
+} from '@ant-design/icons';
 
 const SearchBar: React.FC = () => {
   return (
@@ -15,9 +15,9 @@ const SearchBar: React.FC = () => {
         placeholder="식물 검색하기"
         type="string"
         style={{
-          width: "60%",
-          height: "80%",
-          borderRadius: "10px",
+          width: '60%',
+          height: '80%',
+          borderRadius: '10px',
         }}
       />
       <Avatar size={32} icon={<HistoryOutlined />} />

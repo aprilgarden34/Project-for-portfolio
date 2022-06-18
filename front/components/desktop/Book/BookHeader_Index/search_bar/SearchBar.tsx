@@ -1,10 +1,10 @@
-import { useState } from "react";
-import { Input, Avatar } from "antd";
-import { SearchOutlined, FieldTimeOutlined } from "@ant-design/icons";
-import styles from "./SearchBar.module.css";
+import { useState } from 'react';
+import { Input, Avatar } from 'antd';
+import { SearchOutlined, FieldTimeOutlined } from '@ant-design/icons';
+import styles from './SearchBar.module.scss';
 
 const SearchBar: React.FC = () => {
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState('');
   return (
     <>
       <div className={styles.searchBox}>
@@ -22,7 +22,7 @@ const SearchBar: React.FC = () => {
               onChange={(e) => setSearchQuery(e.target.value)}
               onPressEnter={(e) => {
                 console.log(searchQuery);
-                setSearchQuery("");
+                setSearchQuery('');
               }}
             />
           </div>

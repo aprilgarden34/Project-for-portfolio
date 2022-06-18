@@ -1,30 +1,33 @@
 import { useState } from 'react';
 import Image from 'next/image';
-import styles from './BookContentCard.module.css';
+import styles from './BookContentCard.module.scss';
 import { Card, Col, Row, Modal, Button } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
+import { title } from 'process';
 const { Meta } = Card;
 
-const BookContentCard: React.FC<{ span: number; key: string }> = (props) => {
+const BookContentCard: React.FC<{
+  span: number;
+  src: string;
+  key: string;
+  name: string;
+  month: string;
+  flower_lang: string;
+  info: string;
+  flower: string;
+}> = ({ span, key, src, name, month, flower_lang, info, flower }) => {
   const [visible, setVisible] = useState(false);
   return (
     <>
-      <Col span={props.span}>
+      <Col span={span}>
         <Card
           className={styles.card}
           bordered={false}
           hoverable={true}
           onClick={() => setVisible(true)}
-          cover={
-            <Image
-              src="/images/참나무.jpg"
-              width={480}
-              height={280}
-              objectFit="cover"
-            />
-          }
+          cover={<Image src={src} width={480} height={280} objectFit="cover" />}
         >
-          <Meta title="참나무" description="참나무는 참하다" />
+          <Meta title={name} description={month} />
         </Card>
 
         <Modal
@@ -43,21 +46,26 @@ const BookContentCard: React.FC<{ span: number; key: string }> = (props) => {
           footer={null}
         >
           <div className={styles.modalImageBox}>
-            <Image src="/images/참나무.jpg" layout="fill" objectFit="cover" />
+            <Image
+              src={src}
+              layout="fill"
+              objectFit="cover"
+              style={{ width: '100%', height: '100%' }}
+            />
           </div>
           <div className={styles.modalBoxText}>
-            <p className={styles.plantName}>참나무</p>
+            <p className={styles.plantName}>{name}</p>
             <p>
-              <span className={styles.option} children="꽃말" />
-              <span className={styles.content} children="참하다" />
+              <span className={styles.option}>꽃말</span>
+              <span className={styles.content}>{flower_lang}</span>
             </p>
             <p>
-              <span className={styles.option} children="정보1" />
-              <span className={styles.content} children="infromation 1" />
+              <span className={styles.option}>정보1</span>
+              <span className={styles.content}>{info}</span>
             </p>
             <p>
-              <span className={styles.option} children="정보2" />
-              <span className={styles.content} children="infromation 2" />
+              <span className={styles.option}>정보2</span>
+              <span className={styles.content}>{flower}</span>
             </p>
             {/* <p className={styles.plantMemo}>메모</p> */}
             {/* <div className={styles.MemoBox}></div> */}
