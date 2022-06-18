@@ -54,8 +54,8 @@ export class User extends BaseEntity {
   @ApiPropertyOptional({ description: '회원 탈퇴 여부' })
   isDeleted: boolean;
 
-  @OneToMany(() => Community, (community) => community.user_id)
-  community: Community[];
+  @OneToMany(() => Community, (community) => community.User)
+  Communities: Community[];
 
   @OneToMany(() => Diary, (diary) => diary.user_id)
   book: Diary[];

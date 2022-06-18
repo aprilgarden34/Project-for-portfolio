@@ -1,27 +1,9 @@
-import {
-  Body,
-  Controller,
-  Delete,
-  Get,
-  Param,
-  ParseIntPipe,
-  Patch,
-  Post,
-  Query,
-  UsePipes,
-} from '@nestjs/common';
-import {
-  ApiBody,
-  ApiOperation,
-  ApiParam,
-  ApiResponse,
-  ApiTags,
-} from '@nestjs/swagger';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Community } from 'src/entities/community.entity';
 import { CommunityService } from './community.service';
 import { CreateCommunityDto } from './dto/create-community.dto';
 import { DeleteCommunityDto } from './dto/delete-community.dto';
-import { UpdateLikeDto } from './dto/update-like.dto';
 
 @ApiTags('커뮤니티 API')
 @Controller('community')

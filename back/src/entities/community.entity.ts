@@ -1,6 +1,7 @@
 import {
   BaseEntity,
   Column,
+  CreateDateColumn,
   Entity,
   JoinColumn,
   ManyToOne,
@@ -32,18 +33,17 @@ export class Community extends BaseEntity {
   @ApiPropertyOptional({ description: '유저 정보' })
   description: string;
 
-  @Column({ type: 'varchar', name: 'created_at' })
-  @ApiPropertyOptional({ description: '날짜' })
-  createdAt: string;
+  @CreateDateColumn()
+  createdAt: Date;
 
   @ManyToOne(() => User, (user) => user.id)
   @JoinColumn()
-  user_id: User;
+  User: User;
 
   @Column({ type: 'varchar', name: 'user_id' })
-  @RelationId((community: Community) => community.user_id)
+  @RelationId((community: Community) => community.User)
   userId: string;
 
   @OneToMany(() => Like, (like) => like.id)
-  like_id: Like;
+  Likes: Like;
 }

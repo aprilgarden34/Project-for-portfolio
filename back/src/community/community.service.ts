@@ -26,8 +26,6 @@ export class CommunityService {
   ): Promise<Community> {
     const { photo_url, title, description } = createCommunityDto;
 
-    const nowDate = new Date();
-
     const user = await this.userRepository.findOne({
       where: { id: user_id },
       relations: ['community'],
@@ -38,12 +36,10 @@ export class CommunityService {
       title,
       description,
       userId: user_id,
-      createdAt: nowDate.toLocaleString(),
     });
-    console.log(community);
     try {
       await this.communityRepository.save(community);
-      user.community.push(community);
+      user.Communities.push(community);
       await this.userRepository.save(user);
 
       return community;
