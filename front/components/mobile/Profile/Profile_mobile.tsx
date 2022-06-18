@@ -1,12 +1,11 @@
-import TopNavi from '../TopNavi/TopNavi';
+import TopNavi from '../TopHeader/TopHeader';
 import BottomNavi from '../BottomNavi/BottomNavi';
 import UserSummary from './userSummary/userSummary';
 import UserProfileEdit from './userProfileEdit/userProfileEdit';
-import UserBadge from './userBadge/UserBadge';
-import UserLiked from './userLiked/UserLiked';
-import UserPost from './userPost/UserPost';
-
-import styles from './Profile_mobile.module.css';
+import UserBadge from './userInformation/userBadge/UserBadge';
+import UserLiked from './userInformation/userLiked/UserLiked';
+import UserPost from './userInformation/userPost/UserPost';
+import styles from './Profile_mobile.module.scss';
 
 const Profile_mobile: React.FC = () => {
   return (

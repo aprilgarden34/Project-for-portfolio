@@ -1,15 +1,11 @@
-import type { NextPage } from 'next';
-import Header from '../../components/header/header';
-import CommunityItem from '../../components/community/CommunityItem';
+import CommunityMobile from '../../components/mobile/Community/CommunityMobile';
 
-const Community: NextPage = () => {
+const CommunityPage: React.FC = () => {
   return (
     <>
-      <Header />
-      <h1>Community</h1>
-      <CommunityItem />
+      <CommunityMobile />
     </>
   );
 };
 
-export default Community;
+export default CommunityPage;

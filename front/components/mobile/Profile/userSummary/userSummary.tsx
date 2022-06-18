@@ -1,4 +1,4 @@
-import styles from './userSummary.module.css';
+import styles from './userSummary.module.scss';
 import { Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 
