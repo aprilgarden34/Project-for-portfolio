@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import type { NextPage } from 'next';
 import HomepageMobile from '../components/mobile/HomePage/HomepageMobile';
-import Header from '../components/header/header';
 import LandingPage from '../components/desktop/Landing/landingPage';
 
 const Home: NextPage = () => {
@@ -13,14 +12,7 @@ const Home: NextPage = () => {
   const [displayMode, setDisplayMode] = useState(true);
   useEffect(() => setDisplayMode(IsdeskTop));
 
-  const display = displayMode ? (
-    <>
-      <Header />
-      <LandingPage />
-    </>
-  ) : (
-    <HomepageMobile />
-  );
+  const display = displayMode ? <LandingPage /> : <HomepageMobile />;
 
   return <>{display}</>;
 };
