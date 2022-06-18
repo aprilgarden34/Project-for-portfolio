@@ -1,0 +1,16 @@
+.postingImageBox {
+  width: 100%;
+  height: 70%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  overflow-y: auto;
+
+  .postingImage {
+    width: 32.8%;
+    height: 32%;
+    margin-bottom: 2px;
+    border: 0.8px solid;
+    position: relative;
+  }
+}

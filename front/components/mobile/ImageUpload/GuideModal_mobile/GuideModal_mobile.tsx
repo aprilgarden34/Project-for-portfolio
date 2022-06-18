@@ -1,8 +1,16 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+<<<<<<< HEAD
 import styles from './GuideModal_mobile.module.css';
 import { Button, Modal, Avatar } from 'antd';
 import { CloseOutlined, CheckCircleOutlined } from '@ant-design/icons';
+=======
+import styles from './GuideModal_mobile.module.scss';
+import { Modal } from 'antd';
+import { CloseOutlined } from '@ant-design/icons';
+import GuideModalCard from './GuideModal_card/GuideModalCard';
+import CardDescription from './GuideModal_card/CardDescription';
+>>>>>>> front
 
 const GuideModal_mobile: React.FC<{ visible: boolean }> = ({ visible }) => {
   const [visibleBoolean, setVisibleBoolean] = useState(false);
@@ -34,6 +42,7 @@ const GuideModal_mobile: React.FC<{ visible: boolean }> = ({ visible }) => {
         </div>
 
         <div className={styles.tipBoxWrapper}>
+<<<<<<< HEAD
           <div className={styles.tipBox} key="tip1">
             <p>1. 식물을 프레임 중앙으로 맞춰주세요</p>
             <div className={styles.flexBox}>
@@ -114,6 +123,14 @@ const GuideModal_mobile: React.FC<{ visible: boolean }> = ({ visible }) => {
               </div>
             </div>
           </div>
+=======
+          {CardDescription.map((item, index) => {
+            const description = item.description;
+            const key = item.key;
+
+            return <GuideModalCard description={description} key={key} />;
+          })}
+>>>>>>> front
         </div>
       </Modal>
     </>
