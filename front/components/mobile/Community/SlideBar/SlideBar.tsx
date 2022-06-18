@@ -1,5 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
+import Link from 'next/link';
 import styles from './SlideBar.module.scss';
 import 'swiper/css';
 import SlidingCard from '../SlidingCard/SlidingCard';
@@ -19,7 +20,11 @@ const SlideBar: React.FC = () => {
           onSwiper={(swiper) => console.log(swiper)}
         >
           <SwiperSlide>
-            <SlidingCard />
+            <Link href="/community/userposting">
+              <a>
+                <SlidingCard />
+              </a>
+            </Link>
           </SwiperSlide>
           <SwiperSlide>
             <SlidingCard />

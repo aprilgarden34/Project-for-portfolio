@@ -1,10 +1,8 @@
 import styles from './Homepage.module.scss';
+import Link from 'next/link';
+import Image from 'next/image';
 import TopHeader from '../TopHeader/TopHeader';
 import BottomNavi from '../BottomNavi/BottomNavi';
-import BookLink from './BookLink/BookLink';
-import ImageUploadLink from './ImageUploadLink/ImageUploadLink';
-import CommunityLink from './CommunityLink/CommunityLink';
-import QuestLink from './ProfileLink/QuestLink';
 
 const HomepageMobile: React.FC = () => {
   return (
@@ -12,10 +10,46 @@ const HomepageMobile: React.FC = () => {
       <div className={styles.container}>
         <TopHeader />
         <div className={styles.middleContainer}>
-          <ImageUploadLink />
-          <BookLink />
-          <CommunityLink />
-          <QuestLink />
+          <div className={styles.imageUploadLink}>
+            <Link href="/imageupload">
+              <a>
+                <Image
+                  className={styles.imageUploadImage}
+                  src="/images/식별.png"
+                  layout="fill"
+                />
+              </a>
+            </Link>
+          </div>
+          <div className={styles.bookLink}>
+            <Link href="/book">
+              <a>
+                <Image
+                  className={styles.bookImage}
+                  src={'/images/도감.png'}
+                  layout="fill"
+                />
+              </a>
+            </Link>
+          </div>
+          <div className={styles.communityLink}>
+            <Link href="/community">
+              <a>
+                <Image
+                  className={styles.communityImage}
+                  src="/images/커뮤니티.png"
+                  layout="fill"
+                />
+              </a>
+            </Link>
+          </div>
+          <div className={styles.questLink}>
+            <Image
+              className={styles.questImage}
+              src="/images/퀘스트.png"
+              layout="fill"
+            />
+          </div>
         </div>
         <BottomNavi />
       </div>
