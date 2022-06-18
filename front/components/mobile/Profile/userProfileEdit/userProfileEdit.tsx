@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import styles from './userProfileEdit.module.css';
-=======
 import styles from './userProfileEdit.module.scss';
->>>>>>> front
 import { Button } from 'antd';
 
 const UserProfileEdit: React.FC = () => {

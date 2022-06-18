@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import styles from './userSummary.module.css';
-=======
 import styles from './userSummary.module.scss';
->>>>>>> front
 import { Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 

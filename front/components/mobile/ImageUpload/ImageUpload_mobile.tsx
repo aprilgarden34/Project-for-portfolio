@@ -1,24 +1,13 @@
-<<<<<<< HEAD
-import { useState } from 'react';
-import Image from 'next/image';
-import styles from './ImageUpload_mobile.module.css';
-import TopNavi from '../TopNavi/TopNavi';
-=======
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import styles from './ImageUpload_mobile.module.scss';
 import TopNavi from '../TopHeader/TopHeader';
->>>>>>> front
 import BottomNavi from '../BottomNavi/BottomNavi';
 import GuideModal_mobile from './GuideModal_mobile/GuideModal_mobile';
 import { Button, Modal } from 'antd';
 
 const ImageUpload_mobile: React.FC = () => {
   // const [visible, setVisible] = useState(false);
-<<<<<<< HEAD
-  return (
-    <>
-=======
   const [isSnapped, SetisSnapped] = useState(false);
 
   // Preview Photo Logic
@@ -50,7 +39,6 @@ const ImageUpload_mobile: React.FC = () => {
 
   return (
     <div>
->>>>>>> front
       <div className={styles.container}>
         <TopNavi />
         <div className={styles.middleContainer}>
@@ -65,16 +53,6 @@ const ImageUpload_mobile: React.FC = () => {
                 onClick={() => setVisible(true)}
                 children="촬영 가이드"
               /> */}
-<<<<<<< HEAD
-              <div className={styles.imagePreview}>
-                <Image
-                  src="/images/flora_header_image.jpg"
-                  layout="fill"
-                  objectFit="cover"
-                  draggable={false}
-                />
-              </div>
-=======
 
               <div className={styles.imagePreview}>
                 {isSnapped ? (
@@ -112,15 +90,11 @@ const ImageUpload_mobile: React.FC = () => {
                 )}
               </div>
 
->>>>>>> front
               {/* <Button className={styles.imageUploadButton} children="+" /> */}
               <Button
                 className={styles.imageClassificationButton}
                 children="판별"
-<<<<<<< HEAD
-=======
                 onClick={snapPhoto}
->>>>>>> front
               />
             </div>
           </div>
@@ -128,11 +102,7 @@ const ImageUpload_mobile: React.FC = () => {
         <BottomNavi />
       </div>
       {/* <GuideModal_mobile visible={visible} /> */}
-<<<<<<< HEAD
-    </>
-=======
     </div>
->>>>>>> front
   );
 };
 
