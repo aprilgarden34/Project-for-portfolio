@@ -19,6 +19,7 @@ export class CommunityService {
     private userRepository: Repository<User>,
   ) {}
 
+  // TODO: form-data 이미지 설정
   async create(
     user_id: string,
     createCommunityDto: CreateCommunityDto,
@@ -67,4 +68,8 @@ export class CommunityService {
 
     return community;
   }
+
+  // TODO: 좋아요 수정 기능
+  // 테이블에 communityId, userId 모두 존재하면 삭제, 아니라면 추가
+  //async updateLike(communityId: string, userId: string) {}
 }

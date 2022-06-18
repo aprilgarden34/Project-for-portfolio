@@ -21,6 +21,7 @@ import { Community } from 'src/entities/community.entity';
 import { CommunityService } from './community.service';
 import { CreateCommunityDto } from './dto/create-community.dto';
 import { DeleteCommunityDto } from './dto/delete-community.dto';
+import { UpdateLikeDto } from './dto/update-like.dto';
 
 @ApiTags('커뮤니티 API')
 @Controller('community')
@@ -70,6 +71,9 @@ export class CommunityController {
   }
 
   // TODO: 좋아요 patch
+  // @Patch()
+  // @ApiResponse({ description: '좋아요 수정 성공', type: UpdateLikeDto })
+  //async likeUpdate() {}
 
   // TODO: 게시글 검색 api (유저이름, 게시글 description, 식물 title)
 }
