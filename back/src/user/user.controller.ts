@@ -29,8 +29,6 @@ import { AuthGuard } from '@nestjs/passport';
 import { GetUser } from './get-user.decorator';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { DiaryService } from 'src/diary/diary.service';
-import { Diary } from 'src/entities/diary.entity';
-import { CreateDiaryDto } from 'src/diary/dto/diary-create.dto';
 
 @ApiTags('User API')
 @Controller('user')
@@ -47,15 +45,8 @@ export class UserController {
     description: '유저를 생성한다.',
   })
   @ApiResponse({ description: '회원가입 성공', type: User })
-  async signUp(
-    @Body() createUserDto: CreateUserDto,
-    // createDiaryDto: CreateDiaryDto,
-  ) {
-    //: Promise<User, Book[]>
+  async signUp(@Body() createUserDto: CreateUserDto) {
     const user: User = await this.userService.createUser(createUserDto);
-    // const diarys: Diary[] = await this.diaryService.createDiary({
-    //   user_id: user.id,
-    // });
     this.logger.verbose(`User ${user.email} Sign-Up Success! 
     Payload: ${JSON.stringify({ createUserDto })}`);
     return { user }; //, diarys

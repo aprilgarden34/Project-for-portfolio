@@ -5,19 +5,19 @@ import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 export class Plant extends BaseEntity {
   @PrimaryColumn()
   @ApiPropertyOptional({ description: 'id' })
-  id!: number;
+  id: number;
 
   @Column()
   @ApiPropertyOptional({ description: '꽃 이름' })
-  name!: string;
+  name: string;
 
   @Column()
   @ApiPropertyOptional({ description: '꽃말' })
-  flower_lang!: string;
+  flower_lang: string;
 
   @Column()
   @ApiPropertyOptional({ description: '유래' })
-  info!: string;
+  info: string;
 
   @Column()
   @ApiPropertyOptional({ description: '종 설명' })
