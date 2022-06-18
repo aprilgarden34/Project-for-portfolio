@@ -17,19 +17,15 @@ import { Plant } from './plant.entity';
 @Entity()
 @Unique(['id'])
 export class Diary extends BaseEntity {
-  @PrimaryColumn()
+  @PrimaryColumn({ type: 'varchar', name: 'id' })
   @ApiPropertyOptional({ description: 'id' })
   id: string;
 
-  @ApiPropertyOptional({ description: 'user id' })
-  @ManyToOne(() => User, (user) => user.id)
-  User: User;
-
-  @Column()
+  @Column({ type: 'varchar', name: 'description' })
   @ApiPropertyOptional({ description: '메모' })
   description!: string | null;
 
-  @Column()
+  @Column({ type: 'varchar', name: 'imageURL' })
   @ApiProperty({ description: '유저가 촬영한 사진' })
   imageURL: string;
 
@@ -41,6 +37,10 @@ export class Diary extends BaseEntity {
 
   @ApiPropertyOptional({ description: 'plant id' })
   @OneToOne(() => Plant, (plant) => plant.id)
-  @JoinColumn()
+  @JoinColumn({ name: 'Plant', referencedColumnName: 'id' })
   Plant: Plant;
+
+  @ApiPropertyOptional({ description: 'user id' })
+  @ManyToOne(() => User, (user) => user.id)
+  user_id: User;
 }

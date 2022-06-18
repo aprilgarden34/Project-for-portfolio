@@ -49,7 +49,7 @@ export class UserController {
     const user: User = await this.userService.createUser(createUserDto);
     this.logger.verbose(`User ${user.email} Sign-Up Success! 
     Payload: ${JSON.stringify({ createUserDto })}`);
-    return { user }; //, diarys
+    return { user };
   }
 
   // TODO: SIM 만! reflesh token 추가 필요
