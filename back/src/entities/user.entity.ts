@@ -4,7 +4,7 @@ import {
   CreateDateColumn,
   Entity,
   OneToMany,
-  PrimaryGeneratedColumn,
+  PrimaryColumn,
   Unique,
   UpdateDateColumn,
 } from 'typeorm';
@@ -12,11 +12,13 @@ import { providerType } from '../user/user-provider.enum';
 import { ApiPropertyOptional } from '@nestjs/swagger';
 import { Community } from './community.entity';
 import { Exclude } from 'class-transformer';
+import { Diary } from './diary.entity';
 
 @Entity()
-@Unique(['email', 'id'])
+@Unique(['email'])
+@Unique(['id'])
 export class User extends BaseEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryColumn()
   @ApiPropertyOptional({ description: 'id' })
   id!: string;
 
@@ -26,7 +28,7 @@ export class User extends BaseEntity {
 
   @Column()
   @ApiPropertyOptional({ description: '이메일' })
-  email!: string;
+  email!: string | null;
 
   @Column()
   @ApiPropertyOptional({ description: '비밀번호' })
@@ -43,9 +45,16 @@ export class User extends BaseEntity {
   @OneToMany(() => Community, (community) => community.user_id)
   community: Community[];
 
+  @OneToMany(() => Diary, (diary) => diary.user_id)
+  book: Diary[];
+
   @Column({ nullable: true })
   @Exclude()
   currentHashedRefreshToken?: string;
+
+  @Column({ default: false })
+  @ApiPropertyOptional({ description: '회원 탈퇴 여부' })
+  isDeleted: boolean;
 
   @CreateDateColumn()
   createdDate?: Date;

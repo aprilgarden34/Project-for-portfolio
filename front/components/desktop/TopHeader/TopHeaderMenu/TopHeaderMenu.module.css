@@ -1,0 +1,21 @@
+.TopHeaderMenu {
+  width: 73%;
+  height: 75%;
+  color: black;
+  background-color: #25c86c;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.button {
+  color: black;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.button:hover {
+  color: aliceblue;
+  transform: scale(1.1);
+}

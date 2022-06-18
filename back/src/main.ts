@@ -31,6 +31,7 @@ async function bootstrap() {
   const serverConfig = config.get('server');
   const PORT = serverConfig.port;
   setupSwagger(app);
+  app.enableCors();
   await app.listen(PORT);
 
   Logger.log(`Application running on port ${PORT}`);
