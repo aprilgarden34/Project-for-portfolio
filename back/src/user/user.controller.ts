@@ -10,10 +10,16 @@ import {
   UseGuards,
   Patch,
   Param,
+  ParseUUIDPipe,
 } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UserService } from './user.service';
-import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import {
+  ApiTags,
+  ApiOperation,
+  ApiResponse,
+  ApiBearerAuth,
+} from '@nestjs/swagger';
 import { User } from 'src/entities/user.entity';
 import { LoginUserDto } from './dto/login-user.dto';
 import { UserOauthDto } from './dto/user.oauth.dto';
@@ -43,11 +49,13 @@ export class UserController {
   @ApiResponse({ description: '회원가입 성공', type: User })
   async signUp(
     @Body() createUserDto: CreateUserDto,
-    createDiaryDto: CreateDiaryDto,
+    // createDiaryDto: CreateDiaryDto,
   ) {
     //: Promise<User, Book[]>
     const user: User = await this.userService.createUser(createUserDto);
-    // const diarys: Diary[] = await this.diaryService.createDiary(createDiaryDto);
+    // const diarys: Diary[] = await this.diaryService.createDiary({
+    //   user_id: user.id,
+    // });
     this.logger.verbose(`User ${user.email} Sign-Up Success! 
     Payload: ${JSON.stringify({ createUserDto })}`);
     return { user }; //, diarys
@@ -137,13 +145,14 @@ export class UserController {
 
   // 회원 정보 수정 : description, username
   @Patch('/update/:id')
+  @ApiBearerAuth('access-token')
   @ApiOperation({
     summary: '유저 정보 수정 API',
     description: '유저 정보를 수정한다.',
   })
   @ApiResponse({ description: '유저 정보 수정 성공', type: User })
   async updateUser(
-    @Param('id') id: string,
+    @Param('id', new ParseUUIDPipe()) id: string,
     @Body(ValidationPipe) updateUserDto: UpdateUserDto,
   ): Promise<User> {
     const user: User = await this.userService.updateUser(id, updateUserDto);
@@ -159,7 +168,9 @@ export class UserController {
     description: '유저 회원 탈퇴를 한다.',
   })
   @ApiResponse({ description: '유저 회원 탈퇴 성공', type: User })
-  async deleteUser(@Param('id') id: string): Promise<User> {
+  async deleteUser(
+    @Param('id', new ParseUUIDPipe()) id: string,
+  ): Promise<User> {
     const user: User = await this.userService.deleteUser(id);
     this.logger.verbose(`User ${id} delete Success! 
       Payload: ${JSON.stringify(user)}`);

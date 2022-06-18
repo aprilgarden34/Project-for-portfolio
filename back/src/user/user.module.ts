@@ -10,7 +10,7 @@ import { JWTStrategy } from './strategy/jwt.strategy';
 import { kakaoStragety } from './strategy/kakao.strategy';
 import { GoogleStrategy } from './strategy/google.strategy';
 import { JWTRefreshStrategy } from './strategy/jwt.refresh.strategy';
-// import { GoogleStrategy } from './strategy/google.strategy';
+import { DiaryService } from 'src/diary/diary.service';
 
 const jwtConfig = config.get('jwt');
 @Module({
@@ -28,6 +28,7 @@ const jwtConfig = config.get('jwt');
   providers: [
     ...userRepository,
     UserService,
+    DiaryService,
     kakaoStragety,
     GoogleStrategy,
     JWTStrategy,
@@ -39,6 +40,6 @@ const jwtConfig = config.get('jwt');
     GoogleStrategy,
     PassportModule,
     JWTRefreshStrategy,
-  ], // GoogleStrategy,
+  ],
 })
 export class UserModule {}

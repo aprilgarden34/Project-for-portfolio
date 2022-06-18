@@ -3,13 +3,16 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
   ManyToOne,
+  OneToOne,
   PrimaryColumn,
   Unique,
   UpdateDateColumn,
 } from 'typeorm';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { User } from './user.entity';
+import { Plant } from './plant.entity';
 
 @Entity()
 @Unique(['id'])
@@ -22,9 +25,10 @@ export class Diary extends BaseEntity {
   @ManyToOne(() => User, (user) => user.id)
   user_id: User;
 
-  // @ApiPropertyOptional({ description: 'plant id' })
-  // @OneToOne(() => Plant, (plant) => plant.id)
-  // plant_id: Plant;
+  @ApiPropertyOptional({ description: 'plant id' })
+  @OneToOne(() => Plant, (plant) => plant.id)
+  @JoinColumn()
+  plant_id: Plant;
 
   @Column()
   @ApiPropertyOptional({ description: '메모' })
