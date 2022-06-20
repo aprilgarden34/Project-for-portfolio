@@ -5,12 +5,7 @@ const UserLiked: React.FC = () => {
   return (
     <>
       <div className={styles.userLiked}>
-        <Avatar
-          style={{ backgroundColor: 'azure' }}
-          size={100}
-          shape="circle"
-          icon={<LikeTwoTone twoToneColor="gold" />}
-        />
+        <p>좋아요 한 글</p>
       </div>
     </>
   );
