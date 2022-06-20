@@ -1,0 +1,65 @@
+.container {
+  width: 100%;
+  height: 512px;
+  padding: 13px 18px 39.6px;
+  grid-row-start: 2;
+  background-color: ghostwhite;
+}
+
+.title {
+  height: 12%;
+  display: flex;
+
+  p {
+    font-size: 1.325rem;
+    font-weight: 600;
+    margin-right: 0.6rem;
+  }
+
+  .randomDice {
+    width: 40;
+    height: 40;
+    margin-top: -0.3rem;
+  }
+}
+
+.summaryBox {
+  width: 100%;
+  height: 84%;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  display: grid;
+  grid-template-rows: 20% 80%;
+  grid-template-columns: 100%;
+  border-radius: 1rem;
+}
+
+.grid_1_1 {
+  grid-row: 1;
+  border-left: 3px solid ghostwhite;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #b3ce96;
+  border-radius: 1rem;
+}
+
+.grid_2_1 {
+  grid-row: 2;
+  border-top: 3px solid ghostwhite;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .imageBox {
+    width: 90%;
+    height: 90%;
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+}
