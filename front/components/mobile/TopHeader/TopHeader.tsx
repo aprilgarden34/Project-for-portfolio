@@ -61,12 +61,16 @@ const TopHeader: React.FC = () => {
         activeState={loginActiveState}
         width={400}
         height={720}
+        buttonWidth={150}
+        buttonHeight={60}
       />
       <RegisterModal
         visible={resgisterVisible}
         activeState={registerActiveState}
         width={400}
         height={720}
+        buttonWidth={160}
+        buttonHeight={60}
       />
     </>
   );

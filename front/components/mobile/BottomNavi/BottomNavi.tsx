@@ -31,7 +31,7 @@ const BottomNavi: React.FC = () => {
           <EditOutlined style={{ fontSize: '22px', color: 'white' }} />
         </a>
       </Link>
-      <Link href="/profile">
+      <Link href="/quest">
         <a>
           <CrownOutlined style={{ fontSize: '22px', color: 'white' }} />
         </a>

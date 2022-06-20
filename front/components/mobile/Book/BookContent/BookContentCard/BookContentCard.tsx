@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import styles from './BookContentCard.module.scss';
 import { Modal } from 'antd';
+import { Button } from 'antd/lib/radio';
 import { CloseOutlined } from '@ant-design/icons';
 
 const BookContentCard: React.FC<{
@@ -25,9 +26,9 @@ const BookContentCard: React.FC<{
             </div>
           </div>
           <div className={styles.contentBox}>
-            <p>이름 : {name}</p>
-            <p>꽃말 : {flower_lang}</p>
-            <p>개화시기 : {month}</p>
+            <p className={styles.name}>{name}</p>
+            <p>꽃말: {flower_lang}</p>
+            <p>개화시기: {month}</p>
           </div>
         </div>
       </div>
@@ -51,8 +52,21 @@ const BookContentCard: React.FC<{
         <div className={styles.modalBox}>
           <Image src={src} width={360} height={360} objectFit="cover" />
           <div className={styles.modalBoxText}>
-            <p>{info}</p>
-            <p>{flower}</p>
+            <p className={styles.plantName}>{name}</p>
+            <p>
+              <span className={styles.floweroption}>[꽃말]</span>
+              <span className={styles.flowerlang}>{flower_lang}</span>
+            </p>
+            <p className={styles.infoBox}>
+              <span className={styles.content}>{info}</span>
+            </p>
+          </div>
+          <div className={styles.shareButtonBox}>
+            <Button
+              className={styles.shareButton}
+              onClick={() => setVisible(false)}
+              children="공유"
+            />
           </div>
         </div>
       </Modal>

@@ -42,9 +42,17 @@
   margin-top: 1.125rem;
   background-color: white;
 
+  .name {
+    color: #53b98a;
+    font-size: 1.2rem;
+    font-weight: 600;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
   p {
     color: black;
-    font-weight: 400;
+    font-size: 0.9rem;
+    font-weight: 600;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
 }
@@ -58,8 +66,56 @@
 }
 
 .modalBoxText {
-  margin-top: 20px;
+  padding: 20px;
   font-size: 1rem;
-  height: 460px;
-  overflow-y: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-y: auto;
+}
+
+.plantName {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #53b98a;
+}
+
+.floweroption {
+  font-size: 1.2rem;
+  margin-right: 0.8rem;
+  font-weight: 400;
+}
+
+.flowerlang {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.infoBox {
+  margin-top: 1rem;
+  text-align: left;
+}
+
+.content {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.shareButtonBox {
+  width: 100%;
+  height: 4.5rem;
+  text-align: center;
+}
+
+.shareButton {
+  background-color: #53b98a;
+  color: white;
+  font-size: 1.8rem;
+  width: 7rem;
+  height: 3rem;
+  line-height: 2.8rem;
+  padding: 0;
 }
