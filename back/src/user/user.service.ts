@@ -14,6 +14,7 @@ import { LoginUserDto } from './dto/login-user.dto';
 import { JwtService } from '@nestjs/jwt';
 import { UserOauthDto } from './dto/user.oauth.dto';
 import { v4 as uuidv4 } from 'uuid';
+import { UpdateUserDto } from './dto/update-user.dto';
 
 @Injectable()
 export class UserService {
@@ -22,8 +23,14 @@ export class UserService {
     private readonly userRepository: Repository<User>,
     private readonly jwtService: JwtService,
   ) {}
+  private users: User[] = [];
+  async getAll(): Promise<User[]> {
+    const users = await this.users;
+    return users;
+  }
 
-  async createUser({ username, password, email }): Promise<User> {
+  async createUser(createUserDto: CreateUserDto): Promise<User> {
+    const { username, email, password } = createUserDto;
     const salt = await bcrypt.genSalt();
     const hashedPassword = await bcrypt.hash(password, salt);
     const uuid = uuidv4();
@@ -37,15 +44,14 @@ export class UserService {
 
     try {
       const userResult = await this.userRepository.save(user);
-      console.log(userResult);
+      return userResult;
     } catch (error) {
       if (error.code === '23505') {
-        throw new ConflictException('이미 존재하는 username 입니다.');
+        throw new ConflictException('이미 존재하는 email 입니다.');
       } else {
         throw new InternalServerErrorException();
       }
     }
-    return user;
   }
 
   async signIn(
@@ -138,5 +144,31 @@ export class UserService {
     const payload = { email };
     const accessToken = await this.jwtService.sign(payload);
     return { accessToken, email: user.email, username: user.username };
+  }
+
+  // update
+  async updateUser(id, updateUserDto: UpdateUserDto): Promise<User> {
+    const { description, username } = updateUserDto;
+    const user = await this.userRepository.findOne({ where: { id } });
+
+    user.description = description;
+    user.username = username;
+    try {
+      const userResult = await this.userRepository.save(user);
+      return userResult;
+    } catch (err) {
+      throw new InternalServerErrorException();
+    }
+  }
+
+  async deleteUser(id): Promise<User> {
+    const user = await this.userRepository.findOne({ where: { id } });
+    user.isDeleted = true;
+    try {
+      const userResult = await this.userRepository.save(user);
+      return userResult;
+    } catch (err) {
+      throw new InternalServerErrorException();
+    }
   }
 }
