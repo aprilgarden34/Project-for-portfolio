@@ -15,7 +15,7 @@ const Profile: React.FC = () => {
             />
           </div>
           <div className={styles.innerBox}>
-            <h2 className={styles.playerName}>민들레홀씨</h2>
+            <h2 className={styles.playerName}>공부하는 아냐</h2>
             <h3 className={styles.playerEmail}>simanidev@elice.com</h3>
           </div>
         </div>
