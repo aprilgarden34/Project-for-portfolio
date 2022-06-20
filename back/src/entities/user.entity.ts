@@ -58,7 +58,7 @@ export class User extends BaseEntity {
   Communities: Community[];
 
   @OneToMany(() => Diary, (diary) => diary.user_id)
-  book: Diary[];
+  diaries: Diary[];
 
   @CreateDateColumn()
   createdDate?: Date;
