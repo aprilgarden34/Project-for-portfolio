@@ -9,7 +9,9 @@ const RegisterModal: React.FC<{
   activeState: Function;
   width: number;
   height: number;
-}> = ({ visible, activeState, width, height }) => {
+  buttonWidth: number;
+  buttonHeight: number;
+}> = ({ visible, activeState, width, height, buttonWidth, buttonHeight }) => {
   const [visibleBoolean, setVisibleBoolean] = useState(false);
 
   useEffect(() => {
@@ -97,7 +99,11 @@ const RegisterModal: React.FC<{
           </div>
 
           <div className={styles.loginButtonBox}>
-            <Button className={styles.loginButton} onClick={submitUserInfo}>
+            <Button
+              className={styles.loginButton}
+              style={{ width: buttonWidth, height: buttonHeight }}
+              onClick={submitUserInfo}
+            >
               회원가입
             </Button>
           </div>

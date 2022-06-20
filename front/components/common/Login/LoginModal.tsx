@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import styles from './LoginModal.module.scss';
 import { Modal, Button, Input } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
@@ -9,7 +10,9 @@ const LoginModal: React.FC<{
   activeState: Function;
   width: number;
   height: number;
-}> = ({ visible, activeState, width, height }) => {
+  buttonWidth: number;
+  buttonHeight: number;
+}> = ({ visible, activeState, width, height, buttonWidth, buttonHeight }) => {
   const [visibleBoolean, setVisibleBoolean] = useState(false);
 
   useEffect(() => {
@@ -82,18 +85,35 @@ const LoginModal: React.FC<{
             <div className={styles.grid2_3}></div>
           </div>
           <div className={styles.loginButtonBox}>
-            <Button className={styles.loginButton} onClick={submitLoginInfo}>
+            <Button
+              style={{ width: buttonWidth, height: buttonHeight }}
+              className={styles.loginButton}
+              onClick={submitLoginInfo}
+            >
               로그인
             </Button>
           </div>
           <div className={styles.apiLoginBox}>
-            <Button className={styles.cacaoLoginButton}>'</Button>
-            <Button className={styles.googleLoginButton}>'</Button>
+            <Button className={styles.cacaoLoginButton}>
+              <Image
+                src="/assets/button/CacaoLoginButton.jpg"
+                layout="fill"
+                objectFit="fill"
+              />
+            </Button>
+            <Button className={styles.googleLoginButton}>
+              <Image
+                src="/assets/button/GoogleLoginButton.jpg"
+                layout="fill"
+                objectFit="fill"
+              />
+            </Button>
           </div>
-          <div className={styles.registerBox}>
+
+          {/* <div className={styles.registerBox}>
             <p>계정이 없으신가요?</p>
             <Button className={styles.registerButton}>회원가입</Button>
-          </div>
+          </div> */}
         </div>
       </Modal>
     </>

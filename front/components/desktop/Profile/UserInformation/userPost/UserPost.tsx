@@ -6,12 +6,7 @@ const UserPost: React.FC = () => {
   return (
     <>
       <div className={styles.userPost}>
-        <Avatar
-          style={{ backgroundColor: 'azure' }}
-          size={100}
-          shape="circle"
-          icon={<SnippetsTwoTone twoToneColor="gold" />}
-        />
+        <p>포스팅 한 게시글</p>
       </div>
     </>
   );

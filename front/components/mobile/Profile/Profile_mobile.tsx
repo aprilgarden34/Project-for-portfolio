@@ -1,10 +1,7 @@
 import TopNavi from '../TopHeader/TopHeader';
 import BottomNavi from '../BottomNavi/BottomNavi';
-import UserSummary from './userSummary/userSummary';
-import UserProfileEdit from './userProfileEdit/userProfileEdit';
-import UserBadge from './userInformation/userBadge/UserBadge';
-import UserLiked from './userInformation/userLiked/UserLiked';
-import UserPost from './userInformation/userPost/UserPost';
+import UserSummary from './UserSummary/UserSummary';
+import UserInformation from './userInformation/userInformation';
 import styles from './Profile_mobile.module.scss';
 
 const Profile_mobile: React.FC = () => {
@@ -14,10 +11,7 @@ const Profile_mobile: React.FC = () => {
         <TopNavi />
         <div className={styles.profileBox}>
           <UserSummary />
-          <UserProfileEdit />
-          <UserBadge />
-          <UserLiked />
-          <UserPost />
+          <UserInformation />
         </div>
         <BottomNavi />
       </div>

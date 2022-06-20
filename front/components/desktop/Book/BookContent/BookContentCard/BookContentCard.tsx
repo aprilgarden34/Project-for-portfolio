@@ -33,7 +33,7 @@ const BookContentCard: React.FC<{
         <Modal
           visible={visible}
           width={600}
-          bodyStyle={{ height: '800px', padding: '0px' }}
+          bodyStyle={{ height: '1200px', padding: '0px' }}
           closeIcon={
             <CloseOutlined
               style={{ fontSize: '2rem', color: 'white' }}
@@ -56,19 +56,15 @@ const BookContentCard: React.FC<{
           <div className={styles.modalBoxText}>
             <p className={styles.plantName}>{name}</p>
             <p>
-              <span className={styles.option}>꽃말</span>
-              <span className={styles.content}>{flower_lang}</span>
+              <span className={styles.floweroption}>[꽃말]</span>
+              <span className={styles.flowerlang}>{flower_lang}</span>
             </p>
-            <p>
-              <span className={styles.option}>정보1</span>
+            <p className={styles.infoBox}>
               <span className={styles.content}>{info}</span>
             </p>
-            <p>
-              <span className={styles.option}>정보2</span>
+            <p className={styles.infoBox}>
               <span className={styles.content}>{flower}</span>
             </p>
-            {/* <p className={styles.plantMemo}>메모</p> */}
-            {/* <div className={styles.MemoBox}></div> */}
           </div>
           <div className={styles.shareButtonBox}>
             <Button
