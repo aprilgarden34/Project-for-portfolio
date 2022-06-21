@@ -1,5 +1,5 @@
 import styles from './RegisterModal.module.scss';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Modal, Button, Input } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 import * as API from '../../../api/api';

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import styles from './LoginModal.module.scss';
 import { Modal, Button, Input } from 'antd';
