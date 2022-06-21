@@ -17,21 +17,21 @@ const CommunityUserList: React.FC = () => {
       >
         <SwiperSlide>
           <div
-            style={{ width: '300px', height: '300px', backgroundColor: 'red' }}
+            style={{ width: '15rem', height: '15rem', backgroundColor: 'red' }}
           >
             실험용
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div
-            style={{ width: '300px', height: '300px', backgroundColor: 'red' }}
+            style={{ width: '15rem', height: '15rem', backgroundColor: 'red' }}
           >
             실험용
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div
-            style={{ width: '300px', height: '300px', backgroundColor: 'red' }}
+            style={{ width: '15rem', height: '15rem', backgroundColor: 'red' }}
           >
             실험용
           </div>
