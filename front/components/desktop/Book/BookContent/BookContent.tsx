@@ -7,20 +7,19 @@ import { Row, Avatar } from 'antd';
 import { DoubleLeftOutlined, DoubleRightOutlined } from '@ant-design/icons';
 
 const BookContent: React.FC = () => {
-  const lastPage = Math.ceil(FloraDescription.length / 6);
-
   const [page, setPage] = useState(1);
+  const lastPage = Math.ceil(FloraDescription.length / 6);
+  const MoveToPrev = () =>
+    page > 1 ? setPage((current) => current - 1) : setPage(1);
+  const MoveToNext = () =>
+    page < lastPage ? setPage((current) => current + 1) : setPage(lastPage);
 
   return (
     <>
       <div className={styles.MiddleContentContainer}>
         <div className={styles.leftSliderBar}>
           <Avatar className={styles.avatar}>
-            <DoubleLeftOutlined
-              onClick={() =>
-                page > 1 ? setPage((current) => current - 1) : setPage(1)
-              }
-            />
+            <DoubleLeftOutlined onClick={MoveToPrev} />
           </Avatar>
         </div>
 
@@ -47,13 +46,7 @@ const BookContent: React.FC = () => {
 
         <div className={styles.rightSliderBar}>
           <Avatar className={styles.avatar}>
-            <DoubleRightOutlined
-              onClick={() =>
-                page < lastPage
-                  ? setPage((current) => current + 1)
-                  : setPage(lastPage)
-              }
-            />
+            <DoubleRightOutlined onClick={MoveToNext} />
           </Avatar>
         </div>
       </div>
