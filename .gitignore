@@ -1,3 +1,6 @@
+#folder
+back/
+
 # dependencies
 node_modules
 **/.env
