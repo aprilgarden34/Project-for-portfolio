@@ -1,14 +1,8 @@
-<<<<<<< HEAD
-import styles from './userSummary.module.scss';
-import { Avatar } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
-=======
 import { useRef, useState } from 'react';
 import Image from 'next/image';
 import userProfileImage from '../../../../public/images/bookHeaderImage.jpg';
 import styles from './UserSummary.module.scss';
 import { Button, Input } from 'antd';
->>>>>>> front
 
 const UserSummary: React.FC = () => {
   const [nickname, setNickname] = useState('');
