@@ -12,16 +12,6 @@ const RegisterModal: React.FC<{
   buttonWidth: number;
   buttonHeight: number;
 }> = ({ visible, activeState, width, height, buttonWidth, buttonHeight }) => {
-  const [visibleBoolean, setVisibleBoolean] = useState(false);
-
-  useEffect(() => {
-    setVisibleBoolean(visible);
-  }, [visible]);
-
-  useEffect(() => {
-    activeState(visibleBoolean);
-  }, [visibleBoolean]);
-
   const [email, setEmail] = useState<string>('');
   const [nickname, setNickname] = useState<string>('');
   const [password, setPassword] = useState<string>('');
@@ -41,13 +31,13 @@ const RegisterModal: React.FC<{
   return (
     <>
       <Modal
-        visible={visibleBoolean}
+        visible={visible}
         width={width}
         bodyStyle={{ height: height, padding: '0px', overflowY: 'auto' }}
         closeIcon={
           <CloseOutlined
             style={{ fontSize: '2rem', color: 'black' }}
-            onClick={() => setVisibleBoolean(false)}
+            onClick={() => activeState(false)}
           />
         }
         closable={true}
