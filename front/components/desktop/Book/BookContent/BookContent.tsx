@@ -48,7 +48,16 @@ const BookContent: React.FC = () => {
 
   /* 서치옵션 */
 
-  const [searchOption, setSearchOption] = useState('');
+  const searchOptionResult = useRecoilValue(searchOption);
+
+  useEffect(() => {
+    if (searchOptionResult === 'all') {
+      setFloraList(FloraDescription);
+    } else if (searchOptionResult === 'cleared') {
+    } else if (searchOptionResult === 'uncleared') {
+    } else if (searchOptionResult === 'timebased') {
+    }
+  }, [searchOptionResult]);
 
   return (
     <>

@@ -7,5 +7,5 @@ export const searchQuery = atom({
 
 export const searchOption = atom({
   key: 'searchOption',
-  default: 'all',
+  default: 'default',
 });
