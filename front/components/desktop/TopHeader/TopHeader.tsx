@@ -30,7 +30,15 @@ const TopHeader: React.FC = () => {
                 <Button className={styles.button} type="link" children="도감" />
               </a>
             </Link>
-            <Button className={styles.button} type="link" children="커뮤니티" />
+            <Link href="/community">
+              <a>
+                <Button
+                  className={styles.button}
+                  type="link"
+                  children="커뮤니티"
+                />
+              </a>
+            </Link>
             <Link href="/profile">
               <a>
                 <Button
