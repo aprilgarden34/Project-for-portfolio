@@ -1,5 +1,6 @@
 import styles from './QuestBox.module.scss';
 import Image from 'next/image';
+import dice from '../../../../public/images/랜덤주사위.jpg';
 
 const QuestBox: React.FC = () => {
   return (
@@ -9,11 +10,7 @@ const QuestBox: React.FC = () => {
           <div className={styles.title}>
             <p>오늘의 일일 퀘스트</p>
             <div className={styles.randomDice}>
-              <Image
-                src="/images/랜덤주사위.jpg"
-                width={45}
-                height={45}
-              ></Image>
+              <Image src={dice} width={45} height={45}></Image>
             </div>
           </div>
           <div className={styles.summaryBox}>

@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import Image from 'next/image';
+import BookHeaderImage from '../../../../public/images/bookHeaderImage.jpg';
 import styles from './UserSummary.module.scss';
 import { Button, Input } from 'antd';
 
@@ -36,7 +37,7 @@ const UserSummary: React.FC = () => {
             <div className={styles.imageEdit}>
               <div className={styles.imageBox}>
                 <Image
-                  src={imageUrl ? imageUrl : '/images/flora_header_image.jpg'}
+                  src={imageUrl ? imageUrl : BookHeaderImage}
                   layout="fill"
                   objectFit="cover"
                   draggable={false}

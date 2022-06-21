@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Image from 'next/image';
+import productLogo from '../../../public/images/나만의식물도감로고.png';
 import Link from 'next/link';
 import styles from './TopHedaer.module.scss';
 import { Button } from 'antd';
@@ -21,11 +22,7 @@ const TopHeader: React.FC = () => {
       <div className={styles.TopHeaderContainer}>
         <div className={styles.TopHedaerLeft}>
           <div className={styles.TopHeaderTitle}>
-            <Image
-              src="/images/나만의식물도감로고.png"
-              layout="fill"
-              objectFit="contain"
-            />
+            <Image src={productLogo} layout="fill" objectFit="contain" />
           </div>
           <div className={styles.TopHeaderMenu}>
             <Link href="/book">

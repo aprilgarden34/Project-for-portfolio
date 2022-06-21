@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import userProfileImage from '../../../../public/images/sample1.jpg';
 import styles from './SlidingCard.module.scss';
 import { Button } from 'antd';
 
@@ -9,7 +10,7 @@ const SlidingCard: React.FC = () => {
         <div className={styles.userProfileImageBox}>
           <div className={styles.profileImage}>
             <Image
-              src="/images/sample1.jpg"
+              src={userProfileImage}
               width="100%"
               height="100%"
               objectFit="cover"
@@ -22,7 +23,7 @@ const SlidingCard: React.FC = () => {
         <div className={styles.userposting}>
           <div className={styles.postingImage}>
             <Image
-              src="/images/도감.png"
+              src={userProfileImage}
               width="100%"
               height="100%"
               objectFit="cover"
@@ -30,7 +31,7 @@ const SlidingCard: React.FC = () => {
           </div>
           <div className={styles.postingImage}>
             <Image
-              src="/images/커뮤니티.png"
+              src={userProfileImage}
               width="100%"
               height="100%"
               objectFit="cover"
@@ -38,7 +39,7 @@ const SlidingCard: React.FC = () => {
           </div>
           <div className={styles.postingImage}>
             <Image
-              src="/images/퀘스트.png"
+              src={userProfileImage}
               width="100%"
               height="100%"
               objectFit="cover"

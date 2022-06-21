@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import Image from 'next/image';
+import BookHeaderImage from '../../../public/images/bookHeaderImage.jpg';
 import styles from './ImageUpload.module.scss';
 import TopHeaderContainer from '../TopHeader/TopHeader';
 import GuideModal from './guide_modal/GuideModal';
@@ -36,7 +37,7 @@ const ImageUpload: React.FC = () => {
           </Button>
           <div className={styles.imagePreview}>
             <Image
-              src={imageUrl ? imageUrl : '/images/flora_header_image.jpg'}
+              src={imageUrl ? imageUrl : BookHeaderImage}
               layout="fill"
               objectFit="cover"
               draggable={false}

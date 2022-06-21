@@ -1,4 +1,5 @@
 import styles from './FirstPage.module.scss';
+
 const FirstPage: React.FC = () => {
   return (
     <div className={styles.container}>

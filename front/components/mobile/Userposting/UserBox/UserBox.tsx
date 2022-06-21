@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import userProfileImage from '../../../../public/images/sample1.png';
 import { Button } from 'antd';
 import styles from './UserBox.module.scss';
 
@@ -14,7 +15,7 @@ const UserBox: React.FC = () => {
       <div className={styles.infoBox}>
         <div className={styles.profileImage}>
           <div className={styles.imageInnnerBox}>
-            <Image src="/images/sample1.jpg" layout="fill" objectFit="cover" />
+            <Image src={userProfileImage} layout="fill" objectFit="cover" />
           </div>
         </div>
         <div className={styles.postingNumBox}>
