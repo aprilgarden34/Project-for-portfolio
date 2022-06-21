@@ -1,6 +1,8 @@
 import styles from './CommunityUserList.module.scss';
+import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
+import SlidingUserCard from '../SlidingUserCard/SlidingUserCard';
 
 const CommunityUserList: React.FC = () => {
   return (
@@ -17,23 +19,35 @@ const CommunityUserList: React.FC = () => {
       >
         <SwiperSlide>
           <div
-            style={{ width: '15rem', height: '15rem', backgroundColor: 'red' }}
+            style={{
+              width: '15rem',
+              height: '15rem',
+              backgroundColor: 'white',
+            }}
           >
-            실험용
+            <SlidingUserCard />
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div
-            style={{ width: '15rem', height: '15rem', backgroundColor: 'red' }}
+            style={{
+              width: '15rem',
+              height: '15rem',
+              backgroundColor: 'white',
+            }}
           >
-            실험용
+            <SlidingUserCard />
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div
-            style={{ width: '15rem', height: '15rem', backgroundColor: 'red' }}
+            style={{
+              width: '15rem',
+              height: '15rem',
+              backgroundColor: 'white',
+            }}
           >
-            실험용
+            <SlidingUserCard />
           </div>
         </SwiperSlide>
       </Swiper>
