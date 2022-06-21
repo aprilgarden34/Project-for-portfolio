@@ -13,7 +13,7 @@ const BookContentCard: React.FC<{
   flower_lang: string;
   info: string;
   flower: string;
-}> = ({ key, src, name, month, flower_lang, info, flower }) => {
+}> = ({ key, src, name, month, flower_lang, info }) => {
   const [visible, setVisible] = useState(false);
 
   return (

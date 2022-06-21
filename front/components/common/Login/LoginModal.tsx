@@ -109,11 +109,6 @@ const LoginModal: React.FC<{
               />
             </Button>
           </div>
-
-          {/* <div className={styles.registerBox}>
-            <p>계정이 없으신가요?</p>
-            <Button className={styles.registerButton}>회원가입</Button>
-          </div> */}
         </div>
       </Modal>
     </>

@@ -1,4 +1,3 @@
-import styles from './BookContent.module.scss';
 import BookContentCard from './BookContentCard/BookContentCard';
 import FloraDescription from './FloraDescription/FloraDescription';
 

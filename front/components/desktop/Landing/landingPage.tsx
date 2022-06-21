@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
 import ReactFullpage from '@fullpage/react-fullpage';
 import Head from 'next/head';
 import FirstPage from './FirstPage/FirstPage';
 import SecondPage from './SecondPage/SecondPage';
 import ThirdPage from './ThirdPage/ThirdPage';
-import { AutoComplete } from 'antd';
 
 const Hooks = () => {
   return (

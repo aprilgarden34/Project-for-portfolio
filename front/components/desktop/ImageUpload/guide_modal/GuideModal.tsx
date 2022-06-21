@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
 import styles from './GuideModal.module.scss';
 import { Modal } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
@@ -35,7 +34,7 @@ const GuideModal: React.FC<{ visible: boolean }> = ({ visible }) => {
       </div>
 
       <div className={styles.tipBoxWrapper}>
-        {CardDescription.map((item, index) => {
+        {CardDescription.map((item) => {
           const description = item.description;
           const key = item.key;
 

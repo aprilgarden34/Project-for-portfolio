@@ -1,6 +1,5 @@
 import TopHeader from '../TopHeader/TopHeader';
 import BottomNavi from '../BottomNavi/BottomNavi';
-import SlidingCard from './SlidingCard/SlidingCard';
 import SlideBar from './SlideBar/SlideBar';
 import styles from './CommunityMobile.module.scss';
 

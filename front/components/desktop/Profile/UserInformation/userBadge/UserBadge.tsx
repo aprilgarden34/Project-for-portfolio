@@ -1,6 +1,4 @@
 import styles from './UserBadge.module.scss';
-import { Avatar, Button } from 'antd';
-import { TrophyTwoTone } from '@ant-design/icons';
 
 const UserBadge: React.FC = () => {
   return (

@@ -1,6 +1,4 @@
 import styles from './UserLiked.module.scss';
-import { Avatar, Button } from 'antd';
-import { LikeTwoTone } from '@ant-design/icons';
 const UserLiked: React.FC = () => {
   return (
     <>

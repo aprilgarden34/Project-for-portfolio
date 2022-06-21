@@ -1,6 +1,5 @@
 import styles from './UserLiked.module.scss';
-import { Avatar } from 'antd';
-import { LikeTwoTone } from '@ant-design/icons';
+
 const UserLiked: React.FC = () => {
   return (
     <div className={styles.userLiked}>

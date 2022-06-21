@@ -1,10 +1,9 @@
 import { useState } from 'react';
-import { useMediaQuery } from 'react-responsive';
 import styles from './BookContent.module.scss';
-import Image from 'next/image';
+
 import BookContentCard from './BookContentCard/BookContentCard';
 import FloraDescription from './FloraDescription/FloraDescription';
-import { Grid, Row, Col, Card, Avatar, Input } from 'antd';
+import { Row, Avatar } from 'antd';
 import { DoubleLeftOutlined, DoubleRightOutlined } from '@ant-design/icons';
 
 const BookContent: React.FC = () => {

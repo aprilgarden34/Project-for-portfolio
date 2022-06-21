@@ -1,6 +1,4 @@
 import styles from './UserPost.module.scss';
-import { Avatar } from 'antd';
-import { SnippetsTwoTone } from '@ant-design/icons';
 
 const UserPost: React.FC = () => {
   return (
@@ -11,12 +9,3 @@ const UserPost: React.FC = () => {
 };
 
 export default UserPost;
-
-{
-  /* <Avatar
-style={{ backgroundColor: 'azure' }}
-size={100}
-shape="circle"
-icon={<SnippetsTwoTone twoToneColor="gold" />}
-/> */
-}
