@@ -1,10 +1,12 @@
-import { useState } from 'react';
 import { Input, Avatar } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
+import { useSetRecoilState } from 'recoil';
+import { searchQuery } from '../../../../common/Atom/Atom';
 import styles from './SearchBar.module.scss';
 
 const SearchBar: React.FC = () => {
-  const [searchQuery, setSearchQuery] = useState('');
+  const setSearchQuery = useSetRecoilState(searchQuery);
+
   return (
     <>
       <div className={styles.searchBox}>
@@ -19,9 +21,8 @@ const SearchBar: React.FC = () => {
               autoSize
               placeholder="검색"
               maxLength={8}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              onPressEnter={(e) => {
-                setSearchQuery('');
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
               }}
             />
           </div>
