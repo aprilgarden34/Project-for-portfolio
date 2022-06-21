@@ -21,7 +21,6 @@ const SearchBar: React.FC = () => {
               maxLength={8}
               onChange={(e) => setSearchQuery(e.target.value)}
               onPressEnter={(e) => {
-                console.log(searchQuery);
                 setSearchQuery('');
               }}
             />
