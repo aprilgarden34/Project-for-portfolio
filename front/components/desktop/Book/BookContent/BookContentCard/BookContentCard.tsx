@@ -16,6 +16,8 @@ const BookContentCard: React.FC<{
   flower: string;
 }> = ({ span, key, src, name, month, flower_lang, info, flower }) => {
   const [visible, setVisible] = useState(false);
+  const [postingVisible, setPostingVisible] = useState(false);
+
   return (
     <Col span={span}>
       <Card
@@ -67,7 +69,58 @@ const BookContentCard: React.FC<{
         <div className={styles.shareButtonBox}>
           <Button
             className={styles.shareButton}
-            onClick={() => setVisible(false)}
+            onClick={() => {
+              setVisible(false);
+              setPostingVisible(true);
+            }}
+          >
+            공유
+          </Button>
+        </div>
+      </Modal>
+
+      <Modal
+        visible={postingVisible}
+        width={600}
+        bodyStyle={{ height: '1200px', padding: '0px' }}
+        closeIcon={
+          <CloseOutlined
+            style={{ fontSize: '2rem', color: 'white' }}
+            onClick={() => setPostingVisible(false)}
+          />
+        }
+        closable={true}
+        maskClosable={true}
+        keyboard={true}
+        footer={null}
+      >
+        <div className={styles.modalImageBox}>
+          <Image
+            src={src}
+            layout="fill"
+            objectFit="cover"
+            style={{ width: '100%', height: '100%' }}
+          />
+        </div>
+        <div className={styles.postingBoxText}>
+          <div className={styles.postingTitle}>
+            <input
+              className={styles.postingTitleInput}
+              type="text"
+              placeholder="여기에 제목을 적어주세요"
+            />
+          </div>
+          <div className={styles.postingContent}>
+            <textarea
+              className={styles.postingContentArea}
+              placeholder="내용 작성"
+            ></textarea>
+          </div>
+        </div>
+        <div className={styles.shareButtonBox}>
+          <Button
+            className={styles.shareButton}
+            onClick={() => setPostingVisible(false)}
           >
             공유
           </Button>
