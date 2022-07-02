@@ -15,6 +15,7 @@ const BookContentCard: React.FC<{
   flower: string;
 }> = ({ key, src, name, month, flower_lang, info }) => {
   const [visible, setVisible] = useState(false);
+  const [postingVisible, setPostingVisible] = useState(false);
 
   return (
     <>
@@ -64,7 +65,53 @@ const BookContentCard: React.FC<{
           <div className={styles.shareButtonBox}>
             <Button
               className={styles.shareButton}
-              onClick={() => setVisible(false)}
+              onClick={() => {
+                setVisible(false);
+                setPostingVisible(true);
+              }}
+              children="공유"
+            />
+          </div>
+        </div>
+      </Modal>
+
+      <Modal
+        centered
+        visible={postingVisible}
+        closable={true}
+        maskClosable={true}
+        keyboard={true}
+        footer={null}
+        closeIcon={
+          <CloseOutlined
+            style={{ fontSize: '2rem', color: 'white' }}
+            onClick={() => setPostingVisible(false)}
+          />
+        }
+        bodyStyle={{ height: '800px', padding: '0px' }}
+        width={600}
+      >
+        <div className={styles.modalBox}>
+          <Image src={src} width={360} height={360} objectFit="cover" />
+          <div className={styles.postingBox}>
+            <div className={styles.postingTitle}>
+              <input
+                className={styles.postingTitleInput}
+                type="text"
+                placeholder="제목을 적어주세요"
+              />
+            </div>
+            <div>
+              <textarea
+                className={styles.postingContentArea}
+                placeholder="내용 입력"
+              />
+            </div>
+          </div>
+          <div className={styles.postingButtonBox}>
+            <Button
+              className={styles.postingButton}
+              onClick={() => setPostingVisible(false)}
               children="공유"
             />
           </div>
